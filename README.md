@@ -77,7 +77,7 @@ Link a documento especificando las pruebas realizadas (?)
 
 ## Respuesta a Incidentes
 
-descripcion
+El utilizar un gestor de respuestas a incidentes, viene de la necesidad de tener un seguimiento. Tambien es necesario correlacionar eventos ya que los ataques en general se realizan en varias etapas. Esto es una gran ventaja porque nos permite tener un mejor panorama del ataque.
 
 #### Requisitos de Hardware
 
