@@ -3,25 +3,65 @@
 descripcion
 
 ## Tabla de Contenidos
+  * [Instalacion de Sistema Operativo](#instalación-de-sistema-operativo)
   * [Opciones de Instalación](#opciones-de-instalación)
     * [Ansible](#ansible)
     * [Manual](#manual)
 
-## Instalacion de sistema operativo
+## Instalación de Sistema Operativo
 
-Se eligio como sistema operativo Debian GNU/Linux 64-bits
+Se eligió como sistema operativo Debian 10 GNU/Linux 64-bits. Pasos de instalación:
+
+1. Encender la maquina y bootear a un medio booteable de debian-10.x.x-amd64-netinst.iso
+    * En el caso de estar en un entorno virtualizado el archivo .iso debe estar cargado al servidor. En el caso de tener una maquina dedicada el .iso debe ser grabado a un pen drive por ejemplo.
+2. En el installer menu seleccionar **Graphical install**
+3. Seleccionar **English**.
+4. En la selección de ubicacion, seleccionar **Argentina** (buscar en *Other*).
+5. En la configuración de locale, seleccionar **en_US.UTF-8**.
+6. En la configuración de teclado, seleccionar **Spanish (Latin American)**.
+7. Si no se puede configurar la red con DHCP, selecionar **Configure network manually**.
+8. Ingresar la **direccion IP** que debe tener el servidor, la **mascara de red** y la **dirección IP gateway**.
+9. Ingresar las direcciones IP de los **servidores DNS**.
+10. Ingresar el **hostname** del sistema (e.g. *thehive-debian*).
+11. Ingresar un **nombre de dominio**.
+12. Ingresar una **contraseña** para el usuario *root*.
+13. Ingresar un **nombre real** y luego un **nombre de usuario** para el usuario principal (debe ser *thehive* para no tener que realizar configuraciones adicionales).
+14. Ingresar una **contraseña** para el usuario *thehive*.
+15. Partición de disco: seleccionar **Guided - use entire disk**.
+16. Seleccionar el único disco disponible para particionar, o sea **/dev/sda**.
+17. Seleccionar **All files in one partition**, confirmar los cambios y seleccionar **Yes** para escribir los cambios al disco.
+18. Seleccionar **No** cuando pregunta si se desea escanear otro CD o DVD.
+19. Seleccionar **Argentina** como el Debian archive mirror y luego seleccionar el servidor que esta seleccionado por defecto. No ingresar ningún HTTP proxy.
+20. Seleccionar **No** cuando pregunta si se quiere participar en la encuesta de uso de paquetes.
+21. En la selección de software solamente dejar seleccionado **SSH Server** y **standard system utilities**.
+22. Seleccionar **Yes** para instalar el GRUB boot loader al master boot record, luego seleccionar el disco duro principal, o sea **/dev/sda**.
+23. Seleccionar continuar para finalizar la instalación.
+
+Con esto ya se puede acceder al servidor debian por ssh y realizar el resto de la instalación.
+
+### Configuración de usuario con sudo
+
+Para que el usuario *thehive* pueda utilizar sudo, ingresar al usuario root e ingresar los siguientes comandos.
+
+```bash
+# Instalación de sudo
+apt install sudo
+# Agregar el usuario thehive a la lista de sudoers
+usermod -aG sudo thehive
+```
+
+Luego cerrar la sesión e ingresar al usuario *thehive* para comprobar que se puede utilizar sudo para escalar privilegios.
 
 
-## Opciones de Instalación
+##TheHive & Cortex Instalación - Opciones de Instalación
 
 ### Ansible
 
-Queres usar ansible? Link a repo, seguir instrucciones
+**Queres usar ansible? Link a repo, seguir instrucciones**
 
 ### Manual
-### TheHive & Cortex Instalación
 
-En este documento se indica como instalar TheHive & Cortex. Ver instrucciones originales [aquí](https://github.com/TheHive-Project/TheHiveDocs/blob/master/installation/install-guide.md).
+En este sección se indica como instalar TheHive & Cortex. Ver instrucciones originales [aquí](https://github.com/TheHive-Project/TheHiveDocs/blob/master/installation/install-guide.md).
 
 #### Requisitos
 
@@ -29,8 +69,7 @@ Se requiere tener instalado un sistema operativo de tipo Debian.
 
 #### Elasticsearch
 
-Instale el paquete Elasticsearch proporcionado por Elastic
-
+Instalar el paquete Elasticsearch proporcionado por Elastic:
 ```bash
 # Instalación de clave PGP
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key D88E42B4
@@ -48,8 +87,7 @@ El paquete Debian no inicia el servicio de forma predeterminada, para evitar que
 
 ##### Configuración
 
-Edita `/etc/elasticsearch/elasticsearch.yml` y agrega las siguientes lineas:
-
+Editar `/etc/elasticsearch/elasticsearch.yml` y agregar las siguientes lineas:
 ```
 network.host: 127.0.0.1
 script.inline: true
@@ -61,7 +99,7 @@ thread_pool.bulk.queue_size: 100000
 
 ###### Inicia el Servicio
 
-Ahora que Elasticsearch está configurado, inícielo como un servicio y verifique si se está ejecutando:
+Ahora que Elasticsearch está configurado, iniciarlo como un servicio y verifique si se está ejecutando:
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable elasticsearch.service
@@ -104,7 +142,7 @@ _EOF_
 ) | sudo tee -a /etc/thehive/application.conf
 ```
 
-Luego para iniciar la aplicación como un servicio, use los siguientes comandos:
+Luego para iniciar la aplicación como un servicio, usar los siguientes comandos:
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable thehive.service
@@ -117,17 +155,13 @@ El estado debe ser `active (running)`. Si no se está ejecutando, puede verifica
 sudo journalctl -u elasticsearch.service
 ```
 
-Tenga en cuenta que el servicio puede tardar un tiempo en iniciarse. Una vez que se inicia, puede iniciar su navegador y conectarse a `http://YOUR_SERVER_ADDRESS:9000/`.
+Se debe tener en cuenta que el servicio puede tardar un tiempo en iniciarse. Una vez que se inicia, se puede iniciar el navegador y conectarse a `http://YOUR_SERVER_ADDRESS:9000/`.
 
-Tenga en cuenta que el servicio puede tardar un tiempo en iniciarse.
+La primera vez que se conecte se deberá crear el esquema de la base de datos. Haga clic en "Migrate database" para crear el esquema de base de datos.
 
-La primera vez que se conecte deberá crear el esquema de la base de datos. Haga clic en "Migrate database" para crear el esquema de base de datos.
+Una vez hecho esto, sera redirigido a la página para crear la cuenta del administrador.
 
-Una vez hecho esto, debería ser redirigido a la página para crear la cuenta del administrador.
-
-Una vez creado, debe ser redirigido a la página de inicio de sesión.
-
-**Advertencia**: en esta etapa, si se perdió la creación de la cuenta de administrador, no podrá hacerlo a menos que elimine el índice de TheHive de Elasticsearch. En el caso de que haya cometido un error, primero averigüe cuál es el índice actual de TheHive ejecutando el siguiente comando en un host donde se encuentra el Elasticsearch DB utilizado por TheHive:
+**Advertencia**: en esta etapa, si se perdió la creación de la cuenta de administrador, no se podrá hacer a menos que elimine el índice de TheHive de Elasticsearch. En el caso de que se haya cometido un error, primero se debe averiguar cuál es el índice actual de TheHive ejecutando el siguiente comando en un host donde se encuentra el Elasticsearch DB utilizado por TheHive:
 ```bash
 $ curl http://127.0.0.1:9200/_cat/indices?v
 ```
@@ -139,7 +173,7 @@ yellow open   cortex_1    PC_pLFGBS5G2TNQYr4ajgw   5   1        609            6
 yellow open   the_hive_13 ft7GGTfhTr-4lSzZw5r1DQ   5   1     180131            3     51.3mb         51.3mb
 ```
 
-El índice utilizado por TheHive es `the_hive_13`. Para eliminarlo, ejecute el siguiente comando:
+El índice utilizado por TheHive es `the_hive_13`. Para eliminarlo, ejecutar el siguiente comando:
 ```bash
 $ curl -X DELETE http://127.0.0.1:9200/the_hive_13
 ```
@@ -166,8 +200,7 @@ Los Analyzers y Responders son aplicaciones autónomas administradas y ejecutada
 
 ###### Instalación
 
-Actualmente, todos los Analyzers y Responders compatibles con TheHive Project están escritos en Python 2 o 3. No requieren ninguna fase de compilación, pero sus dependencias tienen
-que ser instaladas. Antes de continuar, deberá instalar las dependencias con:
+Actualmente, todos los Analyzers y Responders compatibles con TheHive Project están escritos en Python 2 o 3. No requieren ninguna fase de compilación, pero sus dependencias tienen que ser instaladas. Antes de continuar, deberá instalar las dependencias con:
 ```bash
 sudo apt-get install -y --no-install-recommends python-pip python2.7-dev python3-pip python3-dev ssdeep libfuzzy-dev libfuzzy2 libimage-exiftool-perl libmagic1 build-essential git libssl-dev
 ```
