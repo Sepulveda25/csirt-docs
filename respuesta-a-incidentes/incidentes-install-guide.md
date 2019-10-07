@@ -53,7 +53,7 @@ usermod -aG sudo thehive
 Luego cerrar la sesión e ingresar al usuario *thehive* para comprobar que se puede utilizar sudo para escalar privilegios.
 
 
-##TheHive & Cortex Instalación - Opciones de Instalación
+## TheHive & Cortex Instalación - Opciones de Instalación
 
 ### Ansible
 
