@@ -77,13 +77,13 @@ Link a documento especificando las pruebas realizadas (?)
 
 ## Respuesta a Incidentes
 
-El utilizar un gestor de respuestas a incidentes, viene de la necesidad de tener un seguimiento, tanto de los potenciales ataques, como de los que se han llevado a cabo. Tambien es necesario correlacionar eventos, ya que los ataques en general se realizan en varias etapas diferentes. Incorporar estas caracteristicas mencionadas permite tener un mejor panorama de las amenazas.
+Utilizar un gestor de respuestas a incidentes, viene de la necesidad de tener un seguimiento, tanto de los potenciales ataques, como de los que se han llevado a cabo. Tambien es necesario correlacionar eventos, ya que los ataques en general se realizan en varias etapas diferentes. Incorporar estas caracteristicas mencionadas permite tener un mejor panorama de las amenazas.
 
 #### Requisitos de Hardware
-{% comment %} 
-    Hardware necesario dependiendo de la cantidad de trafico 
-    Cuanto almacenamiento es necesario para cuanto tiempo de retención.
-{% endcomment %}
+
+VER-> Hardware necesario dependiendo de la cantidad de trafico 
+VER-> Cuanto almacenamiento es necesario para cuanto tiempo de retención.
+
 
 Los requerimientos de hardware son
 
@@ -92,8 +92,11 @@ Los requerimientos de hardware son
 + Disco: 60 GB
 
 ### TheHive
+TheHive es una plataforma de respuesta a incidentes de seguridad gratuita y de código abierto escalable. En esta herramienta, cada investigación corresponde a un caso. En el mensaje que recibe desde Elastalert vienen los Observables, que son campos de la alerta considerados de interés para analizar.
 
 ### Cortex
+Es una herramienta que sirve para analizar los Observables enviados a TheHive. Se pueden ejecutar operaciones mediante Responders que utilizan los Observables como variables de entrada. El analista puede ejecutar los Respondedores para que realicen algún tipo de acción automatizada.
+
 
 ## ML
 
