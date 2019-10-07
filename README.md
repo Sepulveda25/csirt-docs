@@ -77,16 +77,19 @@ Link a documento especificando las pruebas realizadas (?)
 
 ## Respuesta a Incidentes
 
-El utilizar un gestor de respuestas a incidentes, viene de la necesidad de tener un seguimiento. Tambien es necesario correlacionar eventos ya que los ataques en general se realizan en varias etapas. Esto es una gran ventaja porque nos permite tener un mejor panorama del ataque.
+El utilizar un gestor de respuestas a incidentes, viene de la necesidad de tener un seguimiento, tanto de los potenciales ataques, como de los que se han llevado a cabo. Tambien es necesario correlacionar eventos, ya que los ataques en general se realizan en varias etapas diferentes. Incorporar estas caracteristicas mencionadas permite tener un mejor panorama de las amenazas.
 
 #### Requisitos de Hardware
+{% comment %} 
+    Hardware necesario dependiendo de la cantidad de trafico 
+    Cuanto almacenamiento es necesario para cuanto tiempo de retención.
+{% endcomment %}
 
-Hardware necesario dependiendo de la cantidad de trafico
+Los requerimientos de hardware son
 
-Cuanto almacenamiento es necesario para cuanto tiempo de retención.
-
-+ Núcleos CPU:
-+ RAM:
++ Núcleos CPU: 8vCPU
++ RAM: 8 GB
++ Disco: 60 GB
 
 ### TheHive
 
