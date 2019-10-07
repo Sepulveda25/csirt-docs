@@ -53,7 +53,7 @@ thread_pool.search.queue_size: 100000
 thread_pool.bulk.queue_size: 100000
 ```
 
-#### Inicia el Servicio
+###### Inicia el Servicio
 
 Ahora que Elasticsearch está configurado, inícielo como un servicio y verifique si se está ejecutando:
 ```bash
