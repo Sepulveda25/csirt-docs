@@ -100,7 +100,7 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 #### Guías
 
 - [Guía de Virtualización](respuesta-a-incidentes/gestor-incidentes-vm-guide.md)
-- [Guía de Instalación](respuesta-a-incidentes/install-guide.md)
+- [Guía de Instalación](respuesta-a-incidentes/gestor-incidentes-install-guide.md)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Webhooks](admin/webhooks.md)
