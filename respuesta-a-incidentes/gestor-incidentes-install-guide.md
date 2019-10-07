@@ -6,6 +6,12 @@ descripcion
   * [Opciones de Instalación](#opciones-de-instalación)
     * [Ansible](#ansible)
     * [Manual](#manual)
+
+## Instalacion de sistema operativo
+
+Se eligio como sistema operativo Debian GNU/Linux 64-bits
+
+
 ## Opciones de Instalación
 
 ### Ansible
