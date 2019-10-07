@@ -13,15 +13,15 @@ descripcion
 Queres usar ansible? Link a repo, seguir instrucciones
 
 ### Manual
-# TheHive & Cortex Instalación
+### TheHive & Cortex Instalación
 
 En este documento se indica como instalar TheHive & Cortex. Ver instrucciones originales [aquí](https://github.com/TheHive-Project/TheHiveDocs/blob/master/installation/install-guide.md).
 
-## Requisitos
+#### Requisitos
 
 Se requiere tener instalado un sistema operativo de tipo Debian.
 
-## Elasticsearch
+#### Elasticsearch
 
 Instale el paquete Elasticsearch proporcionado por Elastic
 
@@ -40,7 +40,7 @@ sudo apt update && sudo apt install elasticsearch
 
 El paquete Debian no inicia el servicio de forma predeterminada, para evitar que la instancia se una accidentalmente a un clúster, sin estar configurado adecuadamente.
 
-### Configuración
+##### Configuración
 
 Edita `/etc/elasticsearch/elasticsearch.yml` y agrega las siguientes lineas:
 
@@ -68,7 +68,7 @@ El estado debe ser `active (running)`. Si no se está ejecutando, puede verifica
 sudo journalctl -u elasticsearch.service
 ```
 
-## TheHive
+#### TheHive
 
 Para instalar usando los paquetes Debian, se usan los siguientes comandos:
 ```bash
@@ -82,7 +82,7 @@ Si el acceso al servidor `pgp.mit.edu` esta bloqueado el comando `sudo apt-key a
 
 `curl https://raw.githubusercontent.com/TheHive-Project/TheHive/master/PGP-PUBLIC-KEY | sudo apt-key add -`
 
-#### Inicia el Servicio
+###### Inicia el Servicio
 
 El único parámetro requerido para iniciar TheHive es la clave del servidor (`play.http.secret.key`). Esta clave se usa para autenticar cookies que contienen datos. Si TheHive se ejecuta en modo de clúster, todas las instancias deben compartir la misma clave.
 Puede generar la configuración mínima con los siguientes comandos (suponen que se ha creado un usuario dedicado para TheHive, llamado `thehive`):
@@ -140,7 +140,7 @@ $ curl -X DELETE http://127.0.0.1:9200/the_hive_13
 
 Luego, vuelva a cargar la página o reinicie TheHive.
 
-## Cortex
+#### Cortex
 Para instalar el paquete Cortex Debian, use los siguientes comandos:
 ```bash
 echo 'deb https://dl.bintray.com/thehive-project/debian-stable any main' | sudo tee -a /etc/apt/sources.list.d/thehive-project.list
@@ -155,10 +155,10 @@ Algunos entornos pueden bloquear el acceso al servidor de claves `pgp.mit.edu`. 
 
 Una vez que se instala el paquete, instale los analyzer como se describe en la siguiente sección.
 
-### Analyzers and Responders
+##### Analyzers and Responders
 Los Analyzers y Responders son aplicaciones autónomas administradas y ejecutadas a través de Cortex. Tienen su [repositorio de GitHub](https://github.com/TheHive-Project/Cortex-Analyzers). 
 
-#### Instalación
+###### Instalación
 
 Actualmente, todos los Analyzers y Responders compatibles con TheHive Project están escritos en Python 2 o 3. No requieren ninguna fase de compilación, pero sus dependencias tienen
 que ser instaladas. Antes de continuar, deberá instalar las dependencias con:
@@ -219,13 +219,13 @@ responder {
 }
 ```
 
-#### Configuración
+###### Configuración
 
 Todos los Analyzers y Responders deben configurarse utilizando la interfaz de usuario web. En la próxima sección se explicara como crear al menos una organización y luego permita que un usuario con el rol `orgAdmin` configure y habilite los analizadores para esa organización. 
 
-### Guía de inicio rápido
+##### Guía de inicio rápido
 
-#### Paso 1: Configurar Cortex
+###### Paso 1: Configurar Cortex
 
 El archivo de configuración de fondo de Cortex es `/etc/cortex/application.conf` de forma predeterminada. Para iniciar Cortex y siempre que Elasticsearch se esté ejecutando en la misma máquina, el único parámetro requerido para comenzar a funcionar es la clave del servidor (`play.http.secret.key`). Esta clave se utiliza para autenticar las cookies que
 contener datos, y no solo una ID de sesión. Si Cortex se ejecuta en modo de clúster, todos las instancias deben compartir la misma clave.
@@ -248,30 +248,30 @@ analyzer.urls = ["/opt/Cortex-Analyzers/analyzers"]
 
 Tenga en cuenta que esta clave secreta es obligatoria para iniciar la aplicación Cortex.
 
-#### Paso 2: Actualice la base de datos
+###### Paso 2: Actualice la base de datos
 
 Cortex usa ElasticSearch para almacenar la configuración de usuarios, organizaciones y analizadores. La primera vez que se conecta a la interfaz de usuario web (`http://<CORTEX_IP>:9001` por defecto), debe crear la base de datos haciendo clic en el botón` Actualizar base de datos`.
 
-#### Paso 3: Crear el Super Administrador de Cortex
+###### Paso 3: Crear el Super Administrador de Cortex
 
 Luego se le invita a crear el primer usuario. Este es un usuario de administración global de Cortex o `superAdmin`. Esta cuenta de usuario podrá crear organizaciones y usuarios de Cortex.
 
 Luego podrá iniciar sesión con esta cuenta de usuario. Notará que se ha creado la organización predeterminada `cortex` y que incluye su cuenta de usuario, un administrador global de Cortex.
 
-#### Paso 4: Crear una organización
+###### Paso 4: Crear una organización
 
 La organización `cortex` predeterminada no se puede utilizar para ningún otro propósito que no sea administrar administradores globales (usuarios con el rol` superAdmin`), organizaciones y sus usuarios asociados. No se puede usar para habilitar/deshabilitar o configurar analizadores. Para hacerlo, debe crear su propia organización dentro de Cortex haciendo clic en el botón `Agregar organización`.
 
-#### Paso 5: Crear un administrador de organización
+###### Paso 5: Crear un administrador de organización
 
 Cree la cuenta de administrador de la organización (usuario con el rol `orgAdmin`).
 
 Luego, especifique una contraseña para este usuario. Después de hacerlo, cierre sesión e inicie sesión con esa nueva cuenta de usuario. 
 
-#### Paso 6: Habilitar y configurar Analyzers
+###### Paso 6: Habilitar y configurar Analyzers
 
 Habilite los Analyzers que necesita, configúrelos utilizando las pestañas ** Organización **> ** Configuración ** y ** Organización **> ** Analizadores **. Toda la configuración del analizador se realiza mediante la interfaz de usuario web, incluida la adición de claves API y la configuración de límites de velocidad.
 
-#### Paso 7 (Opcional): cree una cuenta para la integración de TheHive
+###### Paso 7 (Opcional): cree una cuenta para la integración de TheHive
 
 Si está utilizando TheHive, cree una nueva cuenta dentro de su organización con el rol `leer, analizar` y genere una clave API que deberá agregar a la configuración de TheHive.
