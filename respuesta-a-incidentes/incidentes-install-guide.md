@@ -4,7 +4,7 @@ descripcion
 
 ## Tabla de Contenidos
   * [Instalacion de Sistema Operativo](#instalación-de-sistema-operativo)
-  * [Opciones de Instalación](#opciones-de-instalación)
+  * [TheHive & Cortex Instalación - Opciones de Instalación](#thehive-&-cortex-instalación---opciones-de-instalación)
     * [Ansible](#ansible)
     * [Manual](#manual)
 
