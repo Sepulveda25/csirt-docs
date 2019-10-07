@@ -97,6 +97,18 @@ TheHive es una plataforma de respuesta a incidentes de seguridad gratuita y de c
 ### Cortex
 Es una herramienta que sirve para analizar los Observables enviados a TheHive. Se pueden ejecutar operaciones mediante Responders que utilizan los Observables como variables de entrada. El analista puede ejecutar los Respondedores para que realicen algún tipo de acción automatizada.
 
+#### Guías
+
+- [Guía de Virtualización](respuesta-a-incidentes/gestor-incidentes-vm-guide.md)
+- [Guía de Instalación](respuesta-a-incidentes/install-guide.md)
+- [Guía de Administración](admin/admin-guide.md)
+- [Guía de Configuración](admin/configuration.md)
+- [Webhooks](admin/webhooks.md)
+- [Cluster Configuration](admin/cluster.md)
+- [Updating](admin/updating.md)
+- [Backup & Restore](admin/backup-restore.md)
+- [Migration Guide](migration-guide.md)
+- [API Documentation](api/README.md) (incomplete)
 
 ## ML
 
