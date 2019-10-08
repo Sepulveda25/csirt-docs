@@ -133,8 +133,8 @@ Hay dos formas de preparar Security Onion para ser utilizado como un nodo forwar
 
 ### Ansible
 
-[Repositorio con instrucciones para usar ansible](https://gitlab.unc.edu.ar/csirt/sonion_config_ansible)
+[Repositorio con instrucciones para usar ansible](https://gitlab.unc.edu.ar/csirt/sonion-config-ansible)
 
 ### Scripts
 
-[Repositorio con instrucciones para usar scripts bash](https://gitlab.unc.edu.ar/csirt/sonion_config_scripts/tree/master/forward_config_script)
+[Repositorio con instrucciones para usar scripts bash](https://gitlab.unc.edu.ar/csirt/sonion-config-scripts/tree/master/forward_config_script)
