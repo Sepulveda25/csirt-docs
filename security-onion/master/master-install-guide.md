@@ -1,22 +1,22 @@
-# Guía de Instalación de Nodo Forward
+# Guía de Instalación de Nodo Master
 
-En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un nodo forward.
+En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un nodo master.
 
 [Volver a documento raiz](../../README.md)
 
 ## Tabla de Contenidos
-  * [Virtualización para un Nodo Forward](#virtualización-para-un-nodo-forward)
+  * [Virtualización para un Nodo Master](#virtualización-para-un-nodo-master)
   * [Instalacion de Security Onion](#instalación-de-security-onion)
     - [Instalación del sistema operativo](#instalación-del-sistema-operativo)
     - [Configuración de interfaz de red de administración](#configuración-de-interfaz-de-red-de-administración)
     - [Montado de segundo disco duro al directorio /nsm](#montado-de-segundo-disco-duro-al-directorio-nsm)
-  * [Nodo Forward - Opciones de Instalación](#nodo-forward-opciones-de-instalación)
+  * [Nodo Master - Opciones de Instalación](#nodo-master-opciones-de-instalación)
     - [Ansible](#ansible)
     - [Scripts](#scripts)
 
-## Virtualización para un Nodo Forward
+## Virtualización para un Nodo Master
 
-Instrucciones de creación de una maquina virtual por si se desea instalar un nodo forward en un entorno virtualizado.
+Instrucciones de creación de una maquina virtual por si se desea instalar un nodo master en un entorno virtualizado.
 
 Esta guía se basa en el uso del entorno VMWare ESXI
 
@@ -27,22 +27,18 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 ### Creación de Maquina Virtual
 
 1. En la sección **Virtual Machines** seleccionar **Create / Register VM** y en la ventana que aparece, *Next*.
-2. Definir un **nombre** para la maquina virtual (e.g. sonion-forward-fcefyn) y selecciona la familia de sistema operativo **Linux**; version **Ubuntu Linux (64-bit)**
+2. Definir un **nombre** para la maquina virtual (e.g. sonion-master) y selecciona la familia de sistema operativo **Linux**; version **Ubuntu Linux (64-bit)**
 3. Seleccionar el **disco físico** en donde se creara la maquina virtual con suficiente espacio para crear los discos duros virtuales.
 4. Configuración de componentes (valores a modo de ejemplo para una red con 250Mbps promedio):
     * CPU: 8
-    * Memory: 16 GB
+    * Memory: 32 GB
     * Hard Disk 1: 50 GB - Thin Provisioned
-    * Hard Disk 2: *Tamaño suficiente para cumplir con la política de retención* - Thick Provisioned (este disco es el que almacenará la captura de paquetes, se llenará rápidamente)
+    * Hard Disk 2: *Tamaño suficiente para cumplir con la política de retención* - Thick Provisioned (este disco es el que almacenara los logs reecibidos, se llenará rápidamente)
     * Network Adapter 1: *Vlan de manejo de CSIRT*
-    * Network Adapter 2: *Mirror port del trafico a monitorear*\*
     * CD/DVD Drive 1: *Datastore ISO file* (seleccionar el iso de Security Onion)
 5. Finaliza la creación de la maquina virtual.
 
-\* La interfaz virtual que recibe el trafico mirroreado debe tener configurado en su switch virtual que acepte trafico en modo promiscuo (ver opciones de seguridad).
-
 ## Instalación de Security Onion
-
 
 ### Instalación del sistema operativo
 
@@ -57,9 +53,9 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 8. Seleccionar la zona horaria apropiada (**Córdoba**).
 9. Seleccionar la distribución del teclado apropiada (por lo general **Spanish (Latin American)**).
 10. Ingresar los nombres y seleccionar una contraseña, valores/formato sugerido:
-    * Your name: "**sonion<codigo_dependencia>**" (e.g. *sonionfcefyn*)
-    * Your computer's name: "**sonion-forward-<codigo_dependencia>**" (e.g. *sonion-forward-fcefyn*)
-    * Pick a username: "**sonion<codigo_dependencia>**" (e.g. *sonionfcefyn*)
+    * Your name: "**sonionmaster**"
+    * Your computer's name: "**sonion-master**"
+    * Pick a username: "**sonionmaster**"
 11. Esperar que termine la instalación y luego reiniciar la maquina.
 
 ### Configuración de interfaz de red de administración
@@ -130,9 +126,9 @@ sudo mkdir /nsm
 sudo mount /dev/sdb1 /nsm
 ```
 
-## Nodo Forward - Opciones de Instalación
+## Nodo Master - Opciones de Instalación
 
-Hay dos formas de preparar Security Onion para ser utilizado como un nodo forward: Utilizando playbooks de ansible o scripts programados en bash.
+Hay dos formas de preparar Security Onion para ser utilizado como un nodo master: Utilizando playbooks de ansible o scripts programados en bash.
 
 ### Ansible
 
@@ -140,4 +136,4 @@ Hay dos formas de preparar Security Onion para ser utilizado como un nodo forwar
 
 ### Scripts
 
-[Repositorio con instrucciones para usar scripts bash](https://gitlab.unc.edu.ar/csirt/sonion-config-scripts/tree/master/forward_config_script)
+[Repositorio con instrucciones para usar scripts bash](https://gitlab.unc.edu.ar/csirt/sonion-config-scripts/tree/master/masterstorage_config_script)
