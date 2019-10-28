@@ -5,7 +5,7 @@ En la siguiente guía se especifican los pasos a seguir junto con los valores su
 [Volver a documento raiz](../../README.md)
 
 ## Tabla de Contenidos
-  * [Virtualización para un Nodo Forward](virtualización-para-un-nodo-forward)
+  * [Virtualización para un Nodo Forward](#virtualización-para-un-nodo-forward)
   * [Instalacion de Security Onion](#instalación-de-security-onion)
   * [Nodo Forward - Opciones de Instalación](#nodo-forward-opciones-de-instalación)
     * [Ansible](#ansible)
