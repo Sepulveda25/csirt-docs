@@ -31,8 +31,7 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 
 #### Guías
 
-- [Guía de Virtualización](security-onion/master/vm-guide.md)
-- [Guía de Instalación](security-onion/master/install-guide.md)
+- [Guía de Instalación](security-onion/master/master-install-guide.md)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Webhooks](admin/webhooks.md)
@@ -64,7 +63,6 @@ Link a documento especificando las pruebas realizadas (?)
 
 #### Guías
 
-- [Guía de Virtualización](security-onion/forward/forward-vm-guide.md)
 - [Guía de Instalación](security-onion/forward/forward-install-guide.md)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
