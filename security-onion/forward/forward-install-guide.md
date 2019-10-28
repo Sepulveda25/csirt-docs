@@ -32,11 +32,11 @@ Esta guía se basa en el uso del entorno VMWare ESXI
     * Hard Disk 1: 50 GB - Thin Provisioned
     * Hard Disk 2: *Tamaño suficiente para cumplir con la política de retención* - Thick Provisioned (este disco es el que gradara la captura de paquetes y se llenara rápidamente)
     * Network Adapter 1: *Vlan de manejo de CSIRT*
-    * Network Adapter 2: *Mirror port del trafico a monitorear*
+    * Network Adapter 2: *Mirror port del trafico a monitorear*\*
     * CD/DVD Drive 1: *Datastore ISO file* (seleccionar el iso de Security Onion)
 5. Finaliza la creación de la maquina virtual.
 
-TODO: Modo promiscuo en switch.
+\* La interfaz virtual que recibe el trafico mirroreado debe tener configurado en su switch virtual que acepte trafico en modo promiscuo (ver opciones de seguridad).
 
 ## Instalación de Security Onion
 
