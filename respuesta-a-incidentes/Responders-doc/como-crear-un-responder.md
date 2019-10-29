@@ -186,4 +186,4 @@ Esta biblioteca ya es utilizada por todos los responders publicados en el reposi
 
 ## Referencias
 
-- Ir a [The hive project](https://github.com/TheHive-Project/CortexDocs/blob/master/api/how-to-create-a-responder.md)
+- Ir a [The hive project](https://github.com/TheHive-Project/CortexDocs/blob/master/api/how-to-create-a-responder.md) How to Write and Submit a Responder
