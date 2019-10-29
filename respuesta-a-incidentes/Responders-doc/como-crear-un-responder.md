@@ -7,8 +7,8 @@
     * [Requisitos de Python](#requisitos-python)
     * [Ejemplo: Archivos de respuesta de correo electrónico](#archivos-de-respuesta-de-ejemplo-correo-electrónico)
     * [Entrada](#entrada)
-    * [Elementos de configuración de interacción de servicio](#servicio-interacción-configuración-elementos)
-    * [Configuración de respuesta en el archivo de configuración global](#respuesta-configuración-en-el-archivo-configuración-global)
+    * [Elementos de configuración de interacción de servicio](#elementos-de-configuración-de-interacción-de-servicio)
+    * [Configuración de respuesta en el archivo de configuración global](#configuración-de-respuesta-en-el-archivo-de-configuración-global)
     * [Salida](#salida)
     * [Python Cortexutils Biblioteca](#python-cortexutils-biblioteca)
  
