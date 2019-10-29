@@ -7,8 +7,6 @@
     * [Requisitos de Python](#requisitos-python)
     * [Ejemplo: Archivos de respuesta de correo electrónico](#archivos-de-respuesta-de-ejemplo-correo-electrónico)
     * [Entrada](#entrada)
-    * [Elementos de configuración de interacción de servicio](#elementos-de-configuración-de-interacción-de-servicio)
-    * [Configuración de respuesta en el archivo de configuración global](#configuración-de-respuesta-en-el-archivo-de-configuración-global)
     * [Salida](#salida)
     * [Python Cortexutils Biblioteca](#python-cortexutils-biblioteca)
  
@@ -126,23 +124,19 @@ archivo original.
   ]
 }
 ```
+### Salida 
+La salida de un responder depende del éxito o fracaso de su ejecución.
 
-### Elementos de configuración de interacción de servicio
-#### name 
-Nombre del servicio específico (o sabor) del responder. 
+Si el respondedor ** falla ** al ejecutar: 
 
-Si el responder solo tiene una interacción de servicio (es decir, realiza solo una 
-acción), es el nombre del directorio del responder. 
+```json
+{
+    "success": false,
+    "errorMessage":".."
+}
+```
 
-Si el responder realiza varias acciones (es decir, viene en varios sabores), 
-debe dar un nombre específico y significativo a cada sabor. 
+-   Cuando `success` se establece en` false`, indica que algo salió mal durante la ejecución.
+-   `errorMessage` es texto libre, generalmente el mensaje de salida de error.
 
-El nombre de cada sabor aparece en la lista de responders de TheHive y en MISP cuando usa Cortex para el enriquecimiento de atributos.
-
-#### version 
-La versión del responder.
-
-Se **debe** aumentar los números mas significativos de versión cuando se añaden nuevas características, se hacen modificaciones para tener en cuenta los cambios en la API, la salida del informe se modifica o cuando se actualizan las plantillas de informes.
-
-Debe aumentar los números menos significativos de la versiones cuando se corrigen los errores.
 
