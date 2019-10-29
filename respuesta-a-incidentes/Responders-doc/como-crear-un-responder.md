@@ -89,3 +89,60 @@ Por ejemplo, si el programa requiere un `thehive: case` (es decir, se aplica a n
 
 Además de la entrada enviada por el remitente, Cortex agrega la sección `config`, que es la configuración específica del responder proporcionada por un usuario `orgAdmin` cuando el responder está habilitado en la interfaz de usuario de Cortex. 
 
+#### Ejemplo: archivo de interacción de servicio para el responder de correo 
+El signo `<==` y todo lo que sigue son comentarios que no aparecen en el 
+archivo original. 
+
+```json
+{
+  "name": "Mailer",
+  "version": "1.0",
+  "author": "CERT-BDF",
+  "url": "https://github.com/TheHive-Project/Cortex-Analyzers",
+  "license": "AGPL-V3",
+  "description": "Send an email with information from a TheHive case or alert",
+  "dataTypeList": ["thehive:case", "thehive:alert"],
+  "command": "Mailer/mailer.py", <== Program to run when invoking the responder
+  "baseConfig": "Mailer", <== name of base config in Cortex responder config page
+  "config": {
+    <== any configuration items
+  },
+  "configurationItems": [ <== list of configuration items the responder needs to operate (api key etc.)
+    {
+      "name": "from",
+      "description": "email address from which the mail is send",
+      "type": "string", <== defines what kind of data type the configuration item is (string, number)
+      "multi": false, <== setting multi to true allows to pass a list of items
+      "required": true 
+    },
+    {
+      "name": "smtp.host",
+      "description": "SMTP server used to send mail",
+      "type": "string",
+      "multi": false,
+      "required": true,
+      "defaultValue": "localhost"
+    }
+  ]
+}
+```
+
+### Elementos de configuración de interacción de servicio
+#### name 
+Nombre del servicio específico (o sabor) del responder. 
+
+Si el responder solo tiene una interacción de servicio (es decir, realiza solo una 
+acción), es el nombre del directorio del responder. 
+
+Si el responder realiza varias acciones (es decir, viene en varios sabores), 
+debe dar un nombre específico y significativo a cada sabor. 
+
+El nombre de cada sabor aparece en la lista de responders de TheHive y en MISP cuando usa Cortex para el enriquecimiento de atributos.
+
+#### version 
+La versión del responder.
+
+Se **debe** aumentar los números mas significativos de versión cuando se añaden nuevas características, se hacen modificaciones para tener en cuenta los cambios en la API, la salida del informe se modifica o cuando se actualizan las plantillas de informes.
+
+Debe aumentar los números menos significativos de la versiones cuando se corrigen los errores.
+
