@@ -9,6 +9,7 @@
     * [Entrada](#entrada)
     * [Salida](#salida)
     * [Python Cortexutils Biblioteca](#python-cortexutils-biblioteca)
+  * [Referencias](#referencias)
  
 ## Escribir un responder
 Un responder es un programa que toma la entrada JSON y realiza una acción y produce un resultado básico de esa acción. Los respondedores son muy similares a los analizadores, aunque tienen diferentes propósitos. Los respondedores están formados por al menos 2 tipos de archivos:
@@ -139,4 +140,50 @@ Si el respondedor **falla** al ejecutar:
 -   Cuando `success` se establece en` false`, indica que algo salió mal durante la ejecución.
 -   `errorMessage` es texto libre, generalmente el mensaje de salida de error.
 
+Si el respondedor **tiene éxito** (es decir, se ejecuta sin ningún error):
 
+```json
+{
+    "success":true,
+    "full":{ "message": ".." },
+    "operations":[]
+}
+```
+
+Cuando `success` se establece en `true`, indica que el respondedor se ejecutó correctamente.
+
+-   Cuando `success` se establece en `true`, indica que el respondedor se ejecutó correctamente.
+-   `full` es el informe completo del responder. Debe contener al menos un mensaje. 
+-   `operations` es una lista de lo que debe ejecutar el sistema de envío.
+    A partir de la versión 3.1.0, TheHive acepta las siguientes operaciones: 
+    -    `AddTagToArtifact` (`{ "type": "AddTagToArtifact", "tag": "tag to add" }`): agrega 
+         una etiqueta al artefacto relacionado con el objeto.
+    -    `AddTagToCase` (`{ "type": "AddTagToCase", "tag": "tag to add" }`): agrega 
+         una etiqueta al caso relacionado con el objeto.
+    -    `MarkAlertAsRead`: marca la alerta relacionada con el objeto como leído 
+    -    `AddCustomField` (`{"name": "key", "value": "value", "tpe": "type"`): agrega un campo personalizado al caso relacionado con el objeto
+
+   
+  La lista de operaciones aceptables aumentará en futuras versiones de TheHive.
+
+### La biblioteca Python de Cortexutils 
+Hasta ahora, todos los responders publicados han sido escritos en Python. Proporcionamos una biblioteca de Python llamada `cortexutils` para ayudar a los desarrolladores a escribir fácilmente sus programas. Sin embargo, tenga en cuenta que Python no es obligatorio para la codificación de respuesta y que se puede usar cualquier lenguaje que se ejecute en Linux, aunque no tendrá los beneficios de la biblioteca CortexUtils. 
+
+Cortexutils se pueden utilizar con Python 2 y 3. 
+Para instalarlo: 
+
+```bash
+pip install cortexutils
+```
+
+or
+
+```bash
+pip3 install cortexutils
+```
+
+Esta biblioteca ya es utilizada por todos los responders publicados en el repositorio de [Github](https://github.com/TheHive-Project/Cortex-Analyzers) del proyecto original.
+
+## Referencias
+
+- Ir a [The hive project](https://github.com/TheHive-Project/CortexDocs/blob/master/api/how-to-create-a-responder.md)
