@@ -2,6 +2,10 @@
 
 descripcion
 
+
+[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master)
+
+
 ## Tabla de Contenidos
   * [Virtualización de gestor de incidentes](#virtualización-de-gestor-de-incidentes)
   * [Instalacion de Sistema Operativo](#instalación-de-sistema-operativo)
