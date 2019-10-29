@@ -97,7 +97,6 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 
 #### Guías
 
-- [Guía de Virtualización](gestion-de-incidentes/incidentes-vm-guide.md)
 - [Guía de Instalación](gestion-de-incidentes/incidentes-install-guide.md)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
