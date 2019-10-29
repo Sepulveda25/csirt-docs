@@ -3,7 +3,7 @@
 ## Tabla de contenido
   * [Escribir un responder](#escribir-un-responder)
     * [Programa](#programa)
-    * [Archivos de interacción de servicio (sabores)](#archivos-interacción-servicio-sabores)
+    * [Archivos de interacción de servicio (sabores)](#archivos-de-interacción-de-servicio-sabores)
     * [Requisitos de Python](#requisitos-python)
     * [Ejemplo: Archivos de respuesta de correo electrónico](#archivos-de-respuesta-de-ejemplo-correo-electrónico)
     * [Entrada](#entrada)
