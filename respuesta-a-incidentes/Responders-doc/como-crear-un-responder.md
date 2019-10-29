@@ -127,7 +127,7 @@ archivo original.
 ### Salida 
 La salida de un responder depende del éxito o fracaso de su ejecución.
 
-Si el respondedor ** falla ** al ejecutar: 
+Si el respondedor **falla** al ejecutar: 
 
 ```json
 {
