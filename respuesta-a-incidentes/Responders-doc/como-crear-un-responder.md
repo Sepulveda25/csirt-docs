@@ -4,11 +4,11 @@
   * [Escribir un responder](#escribir-un-responder)
     * [Programa](#programa)
     * [Archivos de interacción de servicio (sabores)](#archivos-de-interacción-de-servicio-sabores)
-    * [Requisitos de Python](#requisitos-python)
-    * [Ejemplo: Archivos de respuesta de correo electrónico](#archivos-de-respuesta-de-ejemplo-correo-electrónico)
+    * [Requisitos de Python](#requisitos-de-python)
+    * [Ejemplo: Archivos de respuesta de correo electrónico](#ejemplo-archivos-de-respuesta-de-correo-electrónico)
     * [Entrada](#entrada)
     * [Salida](#salida)
-    * [Python Cortexutils Biblioteca](#python-cortexutils-biblioteca)
+    * [Biblioteca Python Cortexutils](#biblioteca-python-cortexutils)
   * [Referencias](#referencias)
  
 ## Escribir un responder
@@ -166,7 +166,7 @@ Cuando `success` se establece en `true`, indica que el respondedor se ejecutó c
    
   La lista de operaciones aceptables aumentará en futuras versiones de TheHive.
 
-### La biblioteca Python de Cortexutils 
+### Biblioteca Python Cortexutils 
 Hasta ahora, todos los responders publicados han sido escritos en Python. Proporcionamos una biblioteca de Python llamada `cortexutils` para ayudar a los desarrolladores a escribir fácilmente sus programas. Sin embargo, tenga en cuenta que Python no es obligatorio para la codificación de respuesta y que se puede usar cualquier lenguaje que se ejecute en Linux, aunque no tendrá los beneficios de la biblioteca CortexUtils. 
 
 Cortexutils se pueden utilizar con Python 2 y 3. 
