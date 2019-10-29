@@ -31,3 +31,17 @@ Un responder debe tener al menos un archivo de interacción de servicio. Dichos 
 
 Un responder puede tener dos o más archivos de interacción de servicio para permitirle realizar diferentes acciones. Hablamos entonces de sabores. Por ejemplo, un responder de correo puede enviar mensajes usando varias plantillas de cuerpo.
 
+### Requisitos de Python 
+Si el responder está escrito en Python, se debe proporcionar un `require.txt` con la lista de todas las dependencias. 
+
+### Ejemplo: Archivos de respuesta de correo electrónico
+A continuación se muestra una lista de directorio de los archivos correspondientes a un responder que usa correo electrónico para notificar. 
+
+```bash
+responders/Mailer
+|-- Mailer.json
+|-- requirements.txt
+`-- mailer.py
+```
+
+
