@@ -2,7 +2,7 @@
 
 En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un nodo forward.
 
-[Volver a documento raiz](../../README.md)
+[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master)
 
 ## Tabla de Contenidos
   * [Virtualización para un Nodo Forward](#virtualización-para-un-nodo-forward)
