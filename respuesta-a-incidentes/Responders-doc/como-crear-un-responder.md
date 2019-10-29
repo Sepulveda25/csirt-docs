@@ -43,5 +43,49 @@ responders/Mailer
 |-- requirements.txt
 `-- mailer.py
 ```
+### Entrada 
+La entrada de un responder puede ser cualquier dato JSON, incluso un simple string. El remitente debe enviar datos con la estructura esperada por el programa. Los tipos de datos aceptables descritos en los archivos de interacción de servicio indican qué tipo de datos se espera. 
+Por ejemplo, si el programa requiere un `thehive: case` (es decir, se aplica a nivel de caso en TheHive), la entrada debe cumplir con el caso de TheHive. Debajo de un ejemplo de entrada `thehive: case`. 
 
+```json
+	{
+		"caseId":1484,
+		"title":"Invoice mail",
+		"description":"...",
+		"startDate":1532586900000,
+		"customFields":{},
+		"pap":2,
+		"flag":false,
+		"status":"Open",
+		"owner":"me",
+		"severity":2,
+		"tlp":2,
+		"tags":["phishing"],
+		"metrics":{},
+		"createdBy":"me",
+		"createdAt":1532586924589,
+		"updatedBy":"me",
+		"updatedAt":1532697739274,
+		"_type":"case",
+		"_routing":"AWTVTJzWpVfF5eRPi-qd",
+		"_parent":null,
+		"_id":"AWTVTJzWpVfF5eRPi-qd",
+		"_version":3,
+		"id":"AWTVTJzWpVfF5eRPi-qd",
+		"config":{
+			"key":"1234567890abcdef",
+			"max_tlp":1,
+			"check_tlp":true,
+			"max_pap":1,
+			"check_pap":true,
+			[..]
+		},
+		"proxy":{
+			"http":"http://myproxy:8080",
+			"https":"https://myproxy:8080"
+		}
+	}
+```
+
+Además de la entrada enviada por el remitente, Cortex agrega la sección `config`, que es la configuración específica del responder proporcionada por un usuario `orgAdmin` cuando el responder está habilitado en la interfaz de usuario de Cortex. 
 
