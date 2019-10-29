@@ -9,7 +9,7 @@ Documentación general del CSIRT
   * [Security Onion](#security-onion)
     * [Nodo Master](#nodo-master)
     * [Nodo Forward](#nodo-forward)
-  * [Respuesta a Incidentes](#respuesta-a-incidentes)
+  * [Gestion de incidentes](#gestion-de-incidentes)
     * [TheHive](#thehive)
     * [Cortex](#cortex)
   * [ML](#ml)
@@ -73,7 +73,7 @@ Link a documento especificando las pruebas realizadas (?)
 - [Migration Guide](migration-guide.md)
 - [API Documentation](api/README.md) (incomplete)
 
-## Respuesta a Incidentes
+## Gestion de incidentes
 
 Utilizar un gestor de respuestas a incidentes, viene de la necesidad de tener un seguimiento, tanto de los potenciales ataques, como de los que se han llevado a cabo. Tambien es necesario correlacionar eventos, ya que los ataques en general se realizan en varias etapas diferentes. Incorporar estas caracteristicas mencionadas permite tener un mejor panorama de las amenazas.
 
@@ -97,8 +97,8 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 
 #### Guías
 
-- [Guía de Virtualización](respuesta-a-incidentes/gestor-incidentes-vm-guide.md)
-- [Guía de Instalación](respuesta-a-incidentes/gestor-incidentes-install-guide.md)
+- [Guía de Virtualización](gestion-de-incidentes/gestor-incidentes-vm-guide.md)
+- [Guía de Instalación](gestion-de-incidentes/gestor-incidentes-install-guide.md)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Webhooks](admin/webhooks.md)
