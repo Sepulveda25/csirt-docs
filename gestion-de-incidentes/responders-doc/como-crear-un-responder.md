@@ -1,6 +1,6 @@
 # Cómo escribir un responder 
 
-[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master)
+[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
 
 ## Tabla de contenido
   * [Escribir un responder](#escribir-un-responder)
