@@ -57,9 +57,9 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 8. Seleccionar la zona horaria apropiada (**Córdoba**).
 9. Seleccionar la distribución del teclado apropiada (por lo general **Spanish (Latin American)**).
 10. Ingresar los nombres y seleccionar una contraseña, valores/formato sugerido:
-    * Your name: "**sonion<codigo_dependencia>**" (e.g. *sonionfcefyn*)
-    * Your computer's name: "**sonion-forward-<codigo_dependencia>**" (e.g. *sonion-forward-fcefyn*)
-    * Pick a username: "**sonion<codigo_dependencia>**" (e.g. *sonionfcefyn*)
+    * Your name: "**sonion[codigo_dependencia]**" (e.g. *sonionfcefyn*)
+    * Your computer's name: "**[dependencia]-[servicio]-[version]**" (e.g. *fcefyn-csirt-sonion-forward-v1*)
+    * Pick a username: "**sonion[codigo_dependencia]**" (e.g. *sonionfcefyn*)
 11. Esperar que termine la instalación y luego reiniciar la maquina.
 
 ### Configuración de interfaz de red de administración
