@@ -1,5 +1,7 @@
 # Cómo escribir un responder 
 
+[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master)
+
 ## Tabla de contenido
   * [Escribir un responder](#escribir-un-responder)
     * [Programa](#programa)
@@ -101,17 +103,17 @@ archivo original.
   "license": "AGPL-V3",
   "description": "Send an email with information from a TheHive case or alert",
   "dataTypeList": ["thehive:case", "thehive:alert"],
-  "command": "Mailer/mailer.py", <== Program to run when invoking the responder
-  "baseConfig": "Mailer", <== name of base config in Cortex responder config page
+  "command": "Mailer/mailer.py", <== Programa para ejecutarse al invocar al responder
+  "baseConfig": "Mailer", <== nombre de la configuración base en la página de configuración del responder Cortex
   "config": {
-    <== any configuration items
+    <== cualquier elemento de configuración
   },
-  "configurationItems": [ <== list of configuration items the responder needs to operate (api key etc.)
+  "configurationItems": [ <== lista de elementos de configuración que el responder necesita para operar (api key, etc.)
     {
       "name": "from",
       "description": "email address from which the mail is send",
-      "type": "string", <== defines what kind of data type the configuration item is (string, number)
-      "multi": false, <== setting multi to true allows to pass a list of items
+      "type": "string", <== define qué tipo de dato es el elemento de configuración (string, número)
+      "multi": false, <== establecer multi en true permite pasar una lista de elementos
       "required": true 
     },
     {
