@@ -2,7 +2,7 @@
 
 En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un nodo master.
 
-[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master)
+[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
 
 ## Tabla de Contenidos
   * [Virtualización para un Nodo Master](#virtualización-para-un-nodo-master)
