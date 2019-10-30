@@ -106,7 +106,7 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 - [Backup & Restore](admin/backup-restore.md)
 - [Migration Guide](migration-guide.md)
 - [API Documentation](api/README.md) (incomplete)
-- [Responders](https://gitlab.unc.edu.ar/csirt/thehive-cortex-responders/README.md#responders-para-cortex-analyzer)
+- [Responders](https://gitlab.unc.edu.ar/csirt/thehive-cortex-responders/tree/master#responders-para-cortex-analyzer)
 - [Como crear un responder](gestion-de-incidentes/responders-doc/como-crear-un-responder.md#cómo-escribir-un-responder)
 
 ## ML
