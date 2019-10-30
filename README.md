@@ -63,7 +63,7 @@ Link a documento especificando las pruebas realizadas (?)
 
 #### Guías
 
-- [Guía de Instalación](security-onion/forward/forward-install-guide.md)
+- [Guía de Instalación](security-onion/forward/forward-install-guide.md#guía-de-instalación-de-nodo-forward)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Webhooks](admin/webhooks.md)
@@ -97,7 +97,7 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 
 #### Guías
 
-- [Guía de Instalación](gestion-de-incidentes/incidentes-install-guide.md)
+- [Guía de Instalación](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Webhooks](admin/webhooks.md)
