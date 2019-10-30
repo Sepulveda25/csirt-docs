@@ -106,6 +106,7 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 - [Backup & Restore](admin/backup-restore.md)
 - [Migration Guide](migration-guide.md)
 - [API Documentation](api/README.md) (incomplete)
+- [Crear un responder](gestion-de-incidentes/responders-doc/como-crear-un-responder.md)
 
 ## ML
 
