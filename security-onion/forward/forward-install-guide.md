@@ -1,12 +1,12 @@
-# Guía de Instalación de Nodo Forward
+# Guía de Instalación de un Nodo Forward
 
 En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un nodo forward.
 
-[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
+[Volver a documento raíz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
 
 ## Tabla de Contenidos
   * [Virtualización para un Nodo Forward](#virtualización-para-un-nodo-forward)
-  * [Instalacion de Security Onion](#instalación-de-security-onion)
+  * [Instalación de Security Onion](#instalación-de-security-onion)
     - [Instalación del sistema operativo](#instalación-del-sistema-operativo)
     - [Configuración de interfaz de red de administración](#configuración-de-interfaz-de-red-de-administración)
     - [Montado de segundo disco duro al directorio /nsm](#montado-de-segundo-disco-duro-al-directorio-nsm)
@@ -58,7 +58,7 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 9. Seleccionar la distribución del teclado apropiada (por lo general **Spanish (Latin American)**).
 10. Ingresar los nombres y seleccionar una contraseña, valores/formato sugerido:
     * Your name: "**sonion[codigo_dependencia]**" (e.g. *sonionfcefyn*)
-    * Your computer's name: "**[dependencia]-[servicio]-[version]**" (e.g. *fcefyn-csirt-sonion-forward-v1*)
+    * Your computer's name: "**[dependencia]-[servicio]-[versión]**" (e.g. *fcefyn-csirt-sonion-forward-v1*)
     * Pick a username: "**sonion[codigo_dependencia]**" (e.g. *sonionfcefyn*)
 11. Esperar que termine la instalación y luego reiniciar la maquina.
 
