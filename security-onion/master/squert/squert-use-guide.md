@@ -77,7 +77,20 @@ Para ver mas detalles de una alerta, simplemente hacer click en ella desplega en
 
 ![](images/squert-alert.png)
 
-Ahora la alerta se agrupa por cantidad de eventos desde la misma Ip de origen a la misma IP de destino
+Ahora la alerta se agrupa por cantidad de eventos desde la misma Ip de origen a la misma IP de destino.
 
+#### Analizando las direcciones IP
 
+Es posible analizar las IP involucradas en la alerta con distintas herramientas externas a Security Onion como VirusTotal o DomainTools. Haciendo click en la Ip se despliega un menu con todas las opciones para conseguir informacion sobre dicha IP.
+
+### Profundizando en un evento particular
+
+Seleccionando una alerta de una IP origen/destino particular, se despliega un nuevo menu con cada uno de los eventos que se generaron.
+
+![](images/squert-events.png)
+
+#### Captura de paquetes
+
+Seleccionando el ID del evento nos lleva a CapMe. CapME es una interfaz web que permite ver una transcripcion pcap procesada con tcpflow/bro y descargar el pcap.
+Esto puede ser particularmente importante para tareas de investigacion y forensia.
 
