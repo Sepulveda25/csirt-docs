@@ -7,7 +7,7 @@ En la siguiente guia se documentan sus distintas opciones para visibilizar y fil
 
 ## Captura de pantalla
 
-[](/images/squert1)
+[](images/squert1)
 
 ## Autenticación
 
