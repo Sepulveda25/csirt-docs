@@ -39,4 +39,14 @@ Por ejemplo, seleccionando las alertas de prioridad 1
 
 ![](images/squert-prior-3.png)
 
+## Diagrama de tiempo
 
+![](images/squert-diagram.png)
+
+El diagrama de tiempo en la parte superior representa los eventos a medida que ocurren cada día.
+En resumen, el diagrama de tiempo:
+
+*  Traza el número bruto de eventos por minuto.
+*  Usa el eje X como la hora del día y el eje Y es el número de minutos de eventos.
+*  Trata cada región equivalente a una hora.
+*  Traza y subraya el número de eventos en cada región para esa hora.
