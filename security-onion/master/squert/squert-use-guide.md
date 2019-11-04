@@ -21,3 +21,22 @@ En squert se puede seleccionar el intervalo de tiempo del cual mostrar las alert
 Para modificar este tiempo, hacer click en INTERVAL y modificar fecha y hora de inicio y fin del intervalo. Para guardar los cambios, presionar actualizar (dos flechas circulares arriba)
 
 ![](images/squert-interval.png)
+
+## Seleccionar alertas por prioridad
+
+Las alertas en squert tienen niveles de prioridad, los cuales se identifican con colores:
+
+*  Rojo: Alertas de prioridad 1, es decir, las mas criticas.
+*  Naranja: Alertas de prioridad 2, intermedias.
+*  Amarillo: Alertas de prioridad 3, baja.
+*  Gris: Alertas de OSSEC (HIDS).
+
+Se puede filtrar las alertas por prioridad en la opcion PRIORITY arriba a la derecha.
+
+![](images/squert-prior-1.png)
+
+Por ejemplo, seleccionando las alertas de prioridad 1
+
+![](images/squert-prior-3.png)
+
+
