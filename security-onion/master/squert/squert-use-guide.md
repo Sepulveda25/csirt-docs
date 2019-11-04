@@ -61,8 +61,23 @@ Squert cuenta con una herramientas de filtrado, con la cual se puede seleccionar
 
 El panel de alertas consta de varias columnas, que se explican a continuación:
 
-*  **QUEUE** - Número de eventos agrupados en la cola
-*  **SC** - Número de IPs de origen distintas para la alerta
+*  **QUEUE** - Número de eventos agrupados en la cola.
+*  **SC** - Número de IPs de origen distintas para la alerta.
+*  **DC** - Número de IPs de destino distintas para la alerta.
+*  **ACTIVITY** - Número de eventos para la alerta dada por hora.
+*  **LAST EVENT** -  Última vez que ocurrió el evento.
+*  **SIGNATURE** - Firma de IDS del evento.
+*  **ID** - ID de firma del evento.
+*  **PROTO** - Protocolo relativo/reconocido dentro/con respecto al evento.
+*  **% TOTAL** - Porcentaje de agrupación de eventos versus recuento de eventos completo.
+
+### Seleccionando una alerta
+
+Para ver mas detalles de una alerta, simplemente hacer click en ella desplega en menu con mucha mas informacion sobre la misma.
+
+![](images/squert-alert.png)
+
+Ahora la alerta se agrupa por cantidad de eventos desde la misma Ip de origen a la misma IP de destino
 
 
 
