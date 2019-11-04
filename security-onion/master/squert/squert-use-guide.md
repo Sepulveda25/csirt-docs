@@ -50,3 +50,19 @@ En resumen, el diagrama de tiempo:
 *  Usa el eje X como la hora del día y el eje Y es el número de minutos de eventos.
 *  Trata cada región equivalente a una hora.
 *  Traza y subraya el número de eventos en cada región para esa hora.
+
+## Filtros
+
+Squert cuenta con una herramientas de filtrado, con la cual se puede seleccionar las alertas por IP, categoria de evento, nombre de la alerta, etc. El panel se encuentra en la parte de arriba de la pantalla principal, a la derecha.
+
+![](images/squert-filter.png)
+
+## Alertas
+
+El panel de alertas consta de varias columnas, que se explican a continuación:
+
+*  **QUEUE** - Número de eventos agrupados en la cola
+*  **SC** - Número de IPs de origen distintas para la alerta
+
+
+
