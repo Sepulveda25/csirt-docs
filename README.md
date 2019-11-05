@@ -150,7 +150,7 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 - [Guía de Instalación](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
-- [Webhooks](https://gitlab.unc.edu.ar/csirt/thehive-cortex-webhooks/tree/master#instalacion-webhooks-para-theHiv-y-respuesta-automatica-a-alertas)
+- [Webhooks](https://gitlab.unc.edu.ar/csirt/thehive-cortex-webhooks/tree/master#instalacion-webhooks-para-thehive-y-respuesta-automatica-a-alertas)
 - [Cluster Configuration](admin/cluster.md)
 - [Updating](admin/updating.md)
 - [Backup & Restore](admin/backup-restore.md)
