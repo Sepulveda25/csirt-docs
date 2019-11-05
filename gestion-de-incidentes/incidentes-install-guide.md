@@ -357,7 +357,7 @@ cortex {
     # URL of the Cortex server
     url = "http://CORTEX_SERVER:CORTEX_PORT"
     # Key of the Cortex user, mandatory for Cortex 2
-    `key = "API key"`
+    key = "API key"
   }
   # HTTP client configuration, more details in section 8
   # ws {
