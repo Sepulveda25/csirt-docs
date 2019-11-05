@@ -340,6 +340,35 @@ Luego, especifique una contraseña para este usuario. Después de hacerlo, cierr
 
 Habilite los Analyzers que necesita, configúrelos utilizando las pestañas ** Organización **> ** Configuración ** y ** Organización **> ** Analizadores **. Toda la configuración del analizador se realiza mediante la interfaz de usuario web, incluida la adición de claves API y la configuración de límites de velocidad.
 
-###### Paso 7 (Opcional): cree una cuenta para la integración de TheHive
+###### Paso 7: cree una cuenta para la integración de TheHive
 
 Si está utilizando TheHive, cree una nueva cuenta dentro de su organización con el rol `leer, analizar` y genere una clave API que deberá agregar a la configuración de TheHive.
+
+###### Paso 8: configurar archivo aplication.conf para que TheHive se comunique con Cortex 
+
+Una ver creada la cuenta en Cortex se debe generar un API key, esta debe ser copiada en la dentro del directorio `/etc/thehive/aplication.conf`:
+
+```
+## Enable the Cortex module
+play.modules.enabled += connectors.cortex.CortexConnector
+
+cortex {
+  "CORTEX-SERVER-ID" {
+    # URL of the Cortex server
+    url = "http://CORTEX_SERVER:CORTEX_PORT"
+    # Key of the Cortex user, mandatory for Cortex 2
+    `key = "API key"`
+  }
+  # HTTP client configuration, more details in section 8
+  # ws {
+  #   proxy {}
+  #   ssl {}
+  # }
+  # Check job update time interval
+  refreshDelay = 1 minute
+  # Maximum number of successive errors before give up
+  maxRetryOnError = 3
+  # Check remote Cortex status time interval
+  statusCheckInterval = 1 minute
+}
+```
