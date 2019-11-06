@@ -43,3 +43,24 @@ Para cada analyzer disponible en Cortex, puede definir dos tipos de plantillas: 
 
 Las plantillas de informes se pueden configurar en el menú `Admin` > `Report templates`. Ofrecemos plantillas de informes para analyzer Cortex predeterminados. Se puede descargar un paquete con todas las plantillas de informes en https://dl.bintray.com/thehive-project/binary/report-templates.zip y se puede inyectar usando el botón `Import templates`.
 
+## 4. Gestión de métricas
+
+Las métricas se han integrado para tener indicadores relevantes sobre los casos.
+
+Las métricas son valores numéricos asociados a casos (por ejemplo, el número de usuarios afectados). Cada métrica tiene un _nombre_ , un _título_ y una _descripción_ , definidos por un administrador. Cuando se agrega una métrica a un caso, no se puede eliminar y se debe completar. Las métricas se utilizan para monitorear los indicadores, gracias a los gráficos.
+
+Las métricas se definen globalmente. Para crear métricas, como administrador, vaya al menú de administración y abra el elemento "Case metrics.
+
+![metrics](../images/thehive-case-metrics.png)
+
+
+Las métricas se utilizan para crear estadísticas (elemento "Estadísticas" en el menú de perfil de usuario). Se pueden filtrar en intervalos de tiempo y en mayúsculas y minúsculas con etiquetas específicas.
+
+Por ejemplo, puede mostrar las métricas del caso con la etiqueta "malspam" en enero de 2016:
+
+![statistics](../images/thehive-statistics.png)
+
+Para los gráficos basados ​​en el tiempo, el usuario puede elegir métricas para mostrar. Se agregan en intervalos de tiempo (por día, semana, mes del año) utilizando una función (suma, mínimo o máximo).
+
+Algunas métricas están predefinidas (además de las definidas por el administrador) como la duración del manejo de casos (cuánto tiempo estuvo abierto el caso) y la cantidad de casos abiertos o cerrados.
+
