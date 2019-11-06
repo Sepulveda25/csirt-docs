@@ -149,7 +149,7 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 
 - [Guía de Instalación](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
 - [Guía de Configuración](admin/configuration.md)
-- [Guía de Administración](admin/admin-guide.md)
+- [Guía de Administración](gestion-de-incidentes/guia-administracion.md)
 - [Webhooks](https://gitlab.unc.edu.ar/csirt/thehive-cortex-webhooks/tree/master#instalacion-webhooks-para-thehive-y-respuesta-automatica-a-alertas)
 - [API Documentation](api/README.md) (incomplete)
 - [Responders](https://gitlab.unc.edu.ar/csirt/thehive-cortex-responders/tree/master#responders-para-cortex-analyzer)
