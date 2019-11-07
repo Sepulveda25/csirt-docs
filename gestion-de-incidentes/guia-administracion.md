@@ -4,14 +4,14 @@
 
 Los usuarios se pueden administrar a través de la página `Administration` > `Users`. Solo los administradores pueden acceder a él. Cada usuario se identifica por su nombre de usuario, nombre completo y función.
 
-![users](../images/thehive-user-management.png)
+![users](imagenes/thehive-user-management.png)
 
 Tenga en cuenta que aún necesita crear cuentas de usuario si utiliza la autenticación LDAP o Active Directory. Esto es necesario para que TheHive recupere su rol y los autentique en la base de datos local, los directorios LDAP y/o AD.
 
 Actualmente hay 4 roles:
  - `read` : altodos los datos no confidenciales se pueden leer. Con este rol, un usuario no puede hacer ningún cambio. No pueden agregar un caso, tarea, registro u observable. Tampoco pueden ejecutar analyzers;
  - `write`: crea, elimina y cambia datos de cualquier tipo. Este rol es para usuarios estándar. El rol `write` hereda los derechos de `read`;
- - `admin`: este rol está reservado para los administradores de TheHive. Los usuarios con este rol pueden administrar cuentas de usuario, métricas, crear plantillas de casos y tipos de datos observables. El rol `admin` los derechos de `write`;
+ - `admin`: este rol está reservado para los administradores de TheHive. Los usuarios con este rol pueden administrar cuentas de usuario, métricas, crear plantillas de casos y tipos de datos observables. El rol `admin` hereda los derechos de `write`;
  - `alert`: los usuarios con este rol solo pueden crear alertas;
 
 **Advertencia**: tenga en cuenta que las cuentas de usuario no se pueden eliminar una vez que se han creado, de lo contrario, los registros de auditoría se referirán a un usuario desconocido. Sin embargo, las cuentas no deseadas o no utilizadas pueden bloquearse.
@@ -22,7 +22,7 @@ Algunos casos pueden compartir la misma estructura (etiquetas, tareas, descripci
 
 Para crear una plantilla, como _administrador_  ir al menú de administración y abrir el elemento "Case templates".
 
-![template](../images/thehive-case-templates.png)
+![template](imagenes/thehive-case-templates.png)
 
 En esta pantalla, puede agregar, eliminar o cambiar la plantilla. Una plantilla contiene:
  * gravedad predeterminada
@@ -51,14 +51,14 @@ Las métricas son valores numéricos asociados a casos (por ejemplo, el número 
 
 Las métricas se definen globalmente. Para crear métricas, como administrador, vaya al menú de administración y abra el elemento "Case metrics.
 
-![metrics](../images/thehive-case-metrics.png)
+![metrics](imagenes/thehive-case-metrics.png)
 
 
 Las métricas se utilizan para crear estadísticas (elemento "Estadísticas" en el menú de perfil de usuario). Se pueden filtrar en intervalos de tiempo y en mayúsculas y minúsculas con etiquetas específicas.
 
 Por ejemplo, puede mostrar las métricas del caso con la etiqueta "malspam" en enero de 2016:
 
-![statistics](../images/thehive-statistics.png)
+![statistics](imagenes/thehive-statistics.png)
 
 Para los gráficos basados ​​en el tiempo, el usuario puede elegir métricas para mostrar. Se agregan en intervalos de tiempo (por día, semana, mes del año) utilizando una función (suma, mínimo o máximo).
 
