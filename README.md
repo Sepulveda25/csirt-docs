@@ -26,7 +26,7 @@ Un CSIRT no solo responde necesariamente a incidentes que ya han sucedido. Un CS
 El CSIRT esta compuesto por tres partes: NSM, SIEM y ML
 
 1. NSM (Monitoreo de seguridad de red) - Proporciona contexto, inteligencia y conciencia situacional de la red.
-2. SIEM (Gestión de información y eventos de seguridad) - laidbiqwubd
+2. SIEM (Gestión de información y eventos de seguridad) - Se encaraga de almacenar la informacion recolectada para poder consultarla a futuro
 3. ML () - lashdfboaiwf
 
 ## Tabla de Contenidos
