@@ -1,5 +1,7 @@
 # Guía de administracion
 
+[Volver a documento raíz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
+
 ## 1. Gestión de usuarios
 
 Los usuarios se pueden administrar a través de la página `Administration` > `Users`. Solo los administradores pueden acceder a él. Cada usuario se identifica por su nombre de usuario, nombre completo y función.
@@ -63,4 +65,7 @@ Por ejemplo, puede mostrar las métricas del caso con la etiqueta "malspam" en e
 Para los gráficos basados ​​en el tiempo, el usuario puede elegir métricas para mostrar. Se agregan en intervalos de tiempo (por día, semana, mes del año) utilizando una función (suma, mínimo o máximo).
 
 Algunas métricas están predefinidas (además de las definidas por el administrador) como la duración del manejo de casos (cuánto tiempo estuvo abierto el caso) y la cantidad de casos abiertos o cerrados.
+
+## Fuente 
+https://github.com/TheHive-Project/TheHiveDocs/blob/master/admin/admin-guide.md
 
