@@ -2,7 +2,7 @@
 
 [Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
 
-[Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/thehive-cortex-responders/blob/master/README.md)
+[Documentacion de responders](https://gitlab.unc.edu.ar/csirt/thehive-cortex-responders/blob/master/README.md)
 
 ## Ejecucion desde una alerta
 
@@ -11,7 +11,7 @@ alerta veremos varias opciones, si hacemos click en la ultima, se desplegara un 
 seleccionar el que queremos ejecutar. Se abre un cartel de confirmacion, le damos a "Yes, run it!" y listo.
 
 
-![](imagenes/ejecutar-responder.png)
+![](images/ejecutar-responder.png)
 
 
-![](imagenes/confirmar-ejecucion-responder.png)
+![](images/confirmar-ejecucion-responder.png)
