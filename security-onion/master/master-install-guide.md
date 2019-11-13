@@ -45,31 +45,31 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 1. Encender la maquina y bootear a un medio booteable de Security Onion
     * En el caso de estar en un entorno virtualizado el archivo .iso debe estar cargado al servidor. En el caso de tener una maquina dedicada el .iso debe ser grabado a un pen drive por ejemplo.
 2. Seleccionar **English**.
-3. **Install Ubuntu Server with the HWE kernel**
-4. Dejar todo sin seleccionar y continuar.
-5. Seleccionar la opción **Erase disk and install SecurityOnion**.
-6. Seleccionar el primer disco duro (**/dev/sda**, el mas pequeño).
-7. Confirmar los cambios seleccionados y continuar.
-8. Seleccionar la zona horaria apropiada (**Córdoba**).
-9. Seleccionar la distribución del teclado apropiada (por lo general **Spanish (Latin American)**).
-10. Ingresar los nombres y seleccionar una contraseña, valores/formato sugerido:
-    * Your name: "**sonionmaster**"
-    * Your computer's name: "**sonion-master**"
-    * Pick a username: "**sonionmaster**"
-11. Esperar que termine la instalación y luego reiniciar la maquina.
+3. Seleccionar **Install Ubuntu Server with the HWE kernel**.
+4. Seleccionar **English**.
+5. Navegar y seleccionar **Argentina** (other -> South America -> Argentina)
+6. Seleccionar **United States - en_US.UTF-8**.
+7. Al preguntar "Detect keyboard layout" seleccionar **No** y en las siguientes dos pantallas seleccionar **Spanish (Latin America)**.
+8. Cuando falla la configuración de la red con DHCP continuar y al solicitar "Network configuration method" seleccionar **Configure network manually**
+    - Ingresar la **dirección IP** que debe tener el servidor, la **mascara de red** y la **dirección IP gateway**.
+    - Ingresar las direcciones IP de hasta 3 **servidores DNS**, separados por espacios.
+9. Ingresar los nombres solicitados y seleccionar una contraseña, valores/formato sugerido:
+    - Hostname: "**sonion-master**"
+    - Domain name
+    - Full name: "**sonionmaster**"
+    - Username: "**sonionmaster**"
+10. Al preguntar "Encrypt your home directory?" seleccionar **No**.
+11. Confirmar la zona horaria detectada (o configurar un servidor NTP)
+12. Al colicitar "Partitioning method" seleccionar **Guided - use entire disk**.
+13. Seleccionar el primer disco duro (**/dev/sda**, el mas pequeño).
+14. Confirmar los cambios seleccionados (escribiendo los cambios al disco) y continuar.
+15. Al solicitar información sobre un HTTP proxy simplemente continuar.
+16. Al preguntar "How do you want to manage upgrades on this system?" seleccionar **No automatic updates**.
+17. Al solicitar el software a instalar solo dejar seleccionado **standard system utilities** y **OpenSSH Server** y continuar.
+18. Al preguntar "Install the GRUB boot loader to the master boot record" seleccionar **Yes** (si pregunta en que disco, seleccionar /dev/sda).
+19. Seleccionar **Continue** para finalizar la instalación, la maquina sera reiniciada.
 
-### Configuración de interfaz de red de administración
-
-1. Ingresar a la sesión y en el escritorio hacer doble click en el icono con el nombre **Setup**
-2. Seleccionar **Yes, Continue!** y luego **Yes, configure /etc/network/interfaces!**.
-3. Seleccionar la **interfaz de administración** (e.g. *ens160*).
-4. Seleccionar **static**.
-5. Ingresar la **dirección IP** que debe tener el servidor, la **mascara de red** y la **dirección IP gateway**.
-6. Ingresar las direcciones IP de los **servidores DNS**.
-7. Ingresar un **local domain name**.
-8. Seleccionar **No, only configure a managenment interface**, luego **Yes, make changes!** y seleccionar **Yes, reboot!** para finaliza la configuración.
-
-Con esto ya se puede acceder al Security Onion por ssh y realizar el resto de la instalación.
+Con esto ya se puede acceder al servidor por ssh y realizar el resto de la instalación.
 
 ### Montado de segundo disco duro al directorio /nsm
 
