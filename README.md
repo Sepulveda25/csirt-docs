@@ -31,7 +31,7 @@ El CSIRT esta compuesto por tres partes: NSM, SIEM y ML
 
 ## Tabla de Contenidos
   * [Security Onion](#security-onion)
-    * [Nodo Master](#nodo-master)
+    * [Servidor Master](#servidor-master)
     * [Nodo Forward](#nodo-forward)
   * [Gestion de incidentes](#gestion-de-incidentes)
     * [TheHive](#thehive)
