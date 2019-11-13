@@ -106,7 +106,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key D88E42B4
 # wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 # Si te tira el error
 # E: gnupg, gnupg2 and gnupg1 do not seem to be installed, but one of them is required for this operation
-# Instalar gnupg con el siguiente comando
+# Instalar gnupg con el siguiente comando:
 # sudo apt-get install -y gnupg2
 # Configuración de repositorio Debian
 echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
@@ -143,6 +143,11 @@ sudo systemctl status elasticsearch.service
 El estado debe ser `active (running)`. Si no se está ejecutando, puede verificar el motivo en los logs:
 ```bash
 sudo journalctl -u elasticsearch.service
+```
+
+Es probable que al iniciar el servicio de Elastic este falle porque no esta instalada ninguna version de Java en el servidor. Puede instalarlo con el siguiente comando:
+```bash
+sudo apt-get install openjdk-11-jre
 ```
 
 #### TheHive
@@ -225,6 +230,16 @@ sudo apt-get install cortex
 Algunos entornos pueden bloquear el acceso al servidor de claves `pgp.mit.edu`. Como resultado, el comando `sudo apt-key adv --keyserver hkp: //pgp.mit.edu --recv-key 562CBC1C` fallará. En ese caso, puede ejecutar el siguiente comando en su lugar:
 
 `curl https://raw.githubusercontent.com/TheHive-Project/Cortex/master/PGP-PUBLIC-KEY | sudo apt-key add -`
+
+A diferencia de Elastic o TheHive, no es necesario crear un servicio para Cortex, este es creado automaticamente. Puede verificar el estado del servicio con el comando:
+```bash
+sudo systemctl status cortex.service
+```
+
+Si el servicio esta inactivo, se debe inicializar:
+```bash
+sudo systemctl start cortex.service
+```
 
 Una vez que se instala el paquete, instale los analyzer como se describe en la siguiente sección.
 
