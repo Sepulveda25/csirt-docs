@@ -102,8 +102,12 @@ Instalar el paquete Elasticsearch proporcionado por Elastic:
 ```bash
 # Instalación de clave PGP
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key D88E42B4
-# Instalación de clave PGP alternativa
+# Instalación de clave PGP alternativa (si no funciona el comando anterior)
 # wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+# Si te tira el error
+# E: gnupg, gnupg2 and gnupg1 do not seem to be installed, but one of them is required for this operation
+# Instalar gnupg con el siguiente comando
+# sudo apt-get install -y gnupg2
 # Configuración de repositorio Debian
 echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
 # Instalar suporte para apt con https
