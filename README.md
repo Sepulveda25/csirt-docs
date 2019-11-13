@@ -154,7 +154,7 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 - [API Documentation](api/README.md) (incomplete)
 - [Responders](https://gitlab.unc.edu.ar/csirt/thehive-cortex-responders/tree/master#responders-para-cortex-analyzer)
 - [Como crear un responder](gestion-de-incidentes/responders-doc/como-crear-un-responder.md#cómo-escribir-un-responder)
-
+- [Como ejecutar un responder](gestion-de-incidentes/responders-doc/ejecutar-responder.md#como-ejecutar-un-responder)
 ## ML
 
 Agregar **todo**
