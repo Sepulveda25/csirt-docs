@@ -1,28 +1,28 @@
-# Guía de Instalación de Nodo Master
+# Guía de Instalación de Servidor Master
 
-En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un nodo master.
+En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un servidor master.
 
 [Volver a documento raiz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
 
 ## Tabla de Contenidos
-  * [Virtualización para un Nodo Master](#virtualización-para-un-nodo-master)
+  * [Virtualización para un Servidor Master](#virtualización-para-un-servidor-master)
   * [Instalacion de Security Onion](#instalación-de-security-onion)
     - [Instalación del sistema operativo](#instalación-del-sistema-operativo)
     - [Configuración de interfaz de red de administración](#configuración-de-interfaz-de-red-de-administración)
     - [Montado de segundo disco duro al directorio /nsm](#montado-de-segundo-disco-duro-al-directorio-nsm)
-  * [Nodo Master - Opciones de Instalación](#nodo-master-opciones-de-instalación)
+  * [Servidor Master - Opciones de Instalación](#servidor-master-opciones-de-instalación)
     - [Ansible](#ansible)
     - [Scripts](#scripts)
 
-## Virtualización para un Nodo Master
+## Virtualización para un Servidor Master
 
-Instrucciones de creación de una maquina virtual por si se desea instalar un nodo master en un entorno virtualizado.
+Instrucciones de creación de una maquina virtual por si se desea instalar un servidor master en un entorno virtualizado.
 
 Esta guía se basa en el uso del entorno VMWare ESXI
 
 #### Prerequisitos
 
-* Tener un ISO de Security Onion subido a algún datastore del servidor
+* Tener un ISO de Ubuntu Server 16.04 (ubuntu-16.04.6-server-amd64.iso) subido en algún datastore del servidor.
 
 ### Creación de Maquina Virtual
 
@@ -33,19 +33,19 @@ Esta guía se basa en el uso del entorno VMWare ESXI
     * CPU: 8
     * Memory: 32 GB
     * Hard Disk 1: 50 GB - Thin Provisioned
-    * Hard Disk 2: *Tamaño suficiente para cumplir con la política de retención* - Thick Provisioned (este disco es el que almacenara los logs reecibidos, se llenará rápidamente)
-    * Network Adapter 1: *Vlan de manejo de CSIRT*
-    * CD/DVD Drive 1: *Datastore ISO file* (seleccionar el iso de Security Onion)
+    * Hard Disk 2: *Tamaño suficiente para cumplir con la política de retención* - Thin Provisioned
+    * Network Adapter 1: *Vlan de administracion de CSIRT*
+    * CD/DVD Drive 1: *Datastore ISO file* (seleccionar el iso de Ubuntu Server)
 5. Finaliza la creación de la maquina virtual.
 
-## Instalación de Security Onion
+## Instalación de Ubuntu Server
 
 ### Instalación del sistema operativo
 
 1. Encender la maquina y bootear a un medio booteable de Security Onion
     * En el caso de estar en un entorno virtualizado el archivo .iso debe estar cargado al servidor. En el caso de tener una maquina dedicada el .iso debe ser grabado a un pen drive por ejemplo.
-2. En el escritorio hacer doble click en el icono con el nombre **Instalacion de Security Onion**
-3. Seleccionar **English**.
+2. Seleccionar **English**.
+3. **Install Ubuntu Server with the HWE kernel**
 4. Dejar todo sin seleccionar y continuar.
 5. Seleccionar la opción **Erase disk and install SecurityOnion**.
 6. Seleccionar el primer disco duro (**/dev/sda**, el mas pequeño).
@@ -126,9 +126,9 @@ sudo mkdir /nsm
 sudo mount /dev/sdb1 /nsm
 ```
 
-## Nodo Master - Opciones de Instalación
+## Servidor Master - Opciones de Instalación
 
-Hay dos formas de preparar Security Onion para ser utilizado como un nodo master: Utilizando playbooks de ansible o scripts programados en bash.
+Hay dos formas de preparar Security Onion para ser utilizado como un servidor master: Utilizando playbooks de ansible o scripts programados en bash.
 
 ### Ansible
 

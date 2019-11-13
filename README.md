@@ -77,7 +77,7 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 
 #### Guías
 
-- [Guía de Instalación](security-onion/master/master-install-guide.md#guía-de-instalación-de-nodo-master)
+- [Guía de Instalación](security-onion/master/master-install-guide.md)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Cluster Configuration](admin/cluster.md)
