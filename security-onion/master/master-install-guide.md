@@ -83,7 +83,7 @@ sudo fdisk -l
 ```bash
 sudo fdisk /dev/sdb
 ```
-  * Ingresar la opcion `n` para crea una nueva partición y dejar todas las opciones solicitadas en sus valores por defecto. Luego ingresar `w` para escribir los cambios al disco.
+  * Ingresar la opcion `n` para crear una nueva partición y dejar todas las opciones solicitadas en sus valores por defecto. Luego ingresar `w` para escribir los cambios al disco.
 3. Formatear la nueva partición usando mkfs
 ```bash
 sudo mkfs.ext4 /dev/sdb1
