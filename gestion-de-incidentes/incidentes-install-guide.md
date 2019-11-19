@@ -141,18 +141,21 @@ sudo systemctl status elasticsearch.service
 ```
 
 El estado debe ser `active (running)`. Si no se está ejecutando, puede verificar el motivo en los logs:
-Para debian:
+
 ```bash
 sudo journalctl -u elasticsearch.service
 ```
+
+Es probable que al iniciar el servicio de Elastic este falle porque no esta instalada ninguna version de Java en el servidor. Puede instalarlo con el siguiente comando:
+
+Para debian:
+```bash
+sudo apt-get install openjdk-11-jre
+```
+
 Para Ubuntu server:
 ```bash
 sudo apt install default-jre
-```
-
-Es probable que al iniciar el servicio de Elastic este falle porque no esta instalada ninguna version de Java en el servidor. Puede instalarlo con el siguiente comando:
-```bash
-sudo apt-get install openjdk-11-jre
 ```
 
 #### TheHive
