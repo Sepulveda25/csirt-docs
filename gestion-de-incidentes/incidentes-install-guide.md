@@ -365,7 +365,7 @@ Luego, especifique una contraseña para este usuario. Después de hacerlo, cierr
 
 ###### Paso 6: Habilitar y configurar Analyzers
 
-Habilite los Analyzers que necesita, configúrelos utilizando las pestañas **Organization**> **Analyzers Config**. Toda la configuración del analizador se realiza mediante la interfaz de usuario web, incluida la adición de claves API y la configuración de límites de velocidad.
+Habilite los Analyzers que necesita, configúrelos utilizando las pestañas **Organization** > **Analyzers Config**. Toda la configuración del analizador se realiza mediante la interfaz de usuario web, incluida la adición de claves API y la configuración de límites de velocidad.
 
 ###### Paso 7: cree una cuenta para la integración de TheHive
 
