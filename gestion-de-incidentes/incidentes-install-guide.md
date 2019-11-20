@@ -373,7 +373,7 @@ Si está utilizando TheHive, cree una nueva cuenta dentro de su organización co
 
 ###### Paso 8: configurar archivo aplication.conf para que TheHive se comunique con Cortex 
 
-Una ver creada la cuenta en Cortex se debe generar un API key, esta debe ser copiada en la dentro del directorio `/etc/thehive/aplication.conf`:
+Una ver creada la cuenta en Cortex se debe generar un API key, esta debe ser copiada en la dentro del directorio `/etc/thehive/application.conf`:
 
 ```
 ## Enable the Cortex module
