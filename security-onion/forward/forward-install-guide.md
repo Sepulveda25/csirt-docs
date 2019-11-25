@@ -45,7 +45,7 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 
 ### Instalación del sistema operativo
 
-1. Encender la maquina y bootear a un medio booteable de Security Onion
+1. Encender la maquina y bootear a un medio booteable de Ubuntu Server 16.04.
     * En el caso de estar en un entorno virtualizado el archivo .iso debe estar cargado al servidor. En el caso de tener una maquina dedicada el .iso debe ser grabado a un pen drive por ejemplo.
 2. Seleccionar **English**.
 3. Seleccionar **Install Ubuntu Server with the HWE kernel**.

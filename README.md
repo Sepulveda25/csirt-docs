@@ -33,21 +33,21 @@ El CSIRT esta compuesto por tres partes: NSM, SIEM y ML
   * [Security Onion](#security-onion)
     * [Servidor Master](#servidor-master)
     * [Nodo Forward](#nodo-forward)
-  * [Gestion de incidentes](#gestion-de-incidentes)
+  * [Gestion de incidentes](#gestión-de-incidentes)
     * [TheHive](#thehive)
     * [Cortex](#cortex)
   * [ML](#ml)
 
 ## Security Onion
 
-Security Onion es una distribución de Linux gratuita y de código abierto desarrollado para detección de intrusos, monitoreo de seguridad empresarial y gestión de logs.
+Security Onion es un suite de herramientas gratuita y de código abierto desarrollado para detección de intrusos, monitoreo de seguridad empresarial y gestión de logs. Se distribuye en forma de una distribución de Linux o como grupos de paquetes de software descargables.
 
-Security Onion entrelaza sin problemas tres funciones principales:
+Entrelaza sin problemas tres funciones principales:
 + captura completa de paquetes;
 + sistemas de detección de intrusos basados en red y en host (NIDS y HIDS, respectivamente);
 + y potentes herramientas de análisis.
 
-Security Onion se basa en un modelo distribuido cliente-servidor modificado. Una implementación distribuida estándar está compuesta por el servidor maestro (Servidor Master), uno o más nodos de reenvío (Nodos Forward) y uno o más nodos de almacenamiento (Nodos Storage). Esta arquitectura es ideal; Si bien puede costar más por adelantado, esta arquitectura proporciona una mayor escalabilidad y rendimiento en el futuro, ya que uno simplemente puede "conectar" nuevos nodos de almacenamiento para manejar más tráfico o fuentes de logs.
+Se basa en un modelo distribuido cliente-servidor modificado. Una implementación distribuida estándar está compuesta por el servidor maestro (Servidor Master), uno o más nodos de reenvío (Nodos Forward) y uno o más nodos de almacenamiento (Nodos Storage). Esta arquitectura es ideal; Si bien puede costar más por adelantado, esta arquitectura proporciona una mayor escalabilidad y rendimiento en el futuro, ya que uno simplemente puede "conectar" nuevos nodos de almacenamiento para manejar más tráfico o fuentes de logs.
 
 ### Servidor Master
 
@@ -66,9 +66,7 @@ El servidor maestro ejecuta los siguientes componentes (modo de producción con 
 
 #### Requisitos de Hardware
 
-Un servidor maestro empresarial debe tener 8 núcleos de CPU como mínimo, 16-128 GB de RAM y suficiente espacio en disco (se recomiendan varios terabytes) para cumplir con sus requisitos de retención de logs.
-
-Hardware necesario dependiendo de la cantidad de trafico
+Un servidor maestro empresarial debe tener 8 núcleos de CPU como mínimo, 16-128 GB de RAM y suficiente espacio en disco (se recomiendan varios terabytes) para cumplir con sus requisitos de retención de logs. Los requerimientos pueden variar dependiendo de la cantidad de logs nuevos que son recibidos y de la cantidad de consultas que se realizan a los logs ya almacenados.
 
 Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 
@@ -116,6 +114,7 @@ Link a documento especificando las pruebas realizadas (?)
 #### Guías
 
 - [Guía de Instalación](security-onion/forward/forward-install-guide.md#guía-de-instalación-de-nodo-forward)
+- [Guía de Requerimientos de Hardware](security-onion/forward/forward-hardware-guide.md#guía-de-requerimientos-de-hardware-de-un-nodo-forward)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Cluster Configuration](admin/cluster.md)
