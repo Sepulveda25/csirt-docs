@@ -97,6 +97,8 @@ Los Nodos Forward ejecutan los siguientes componentes (modo de producción con m
 
 #### Requisitos de Hardware
 
+Ver "Guía de Requerimientos de Hardware" abajo..
+
 Hardware necesario dependiendo de la cantidad de trafico
 
 Cuanto almacenamiento es necesario para cuanto tiempo de retención.
@@ -113,8 +115,8 @@ Link a documento especificando las pruebas realizadas (?)
 
 #### Guías
 
-- [Guía de Instalación](security-onion/forward/forward-install-guide.md#guía-de-instalación-de-nodo-forward)
 - [Guía de Requerimientos de Hardware](security-onion/forward/forward-hardware-guide.md#guía-de-requerimientos-de-hardware-de-un-nodo-forward)
+- [Guía de Instalación](security-onion/forward/forward-install-guide.md#guía-de-instalación-de-nodo-forward)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Cluster Configuration](admin/cluster.md)
