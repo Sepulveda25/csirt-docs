@@ -156,6 +156,21 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 - [Responders](https://gitlab.unc.edu.ar/csirt/thehive-cortex-responders/tree/master#responders-para-cortex-analyzer)
 - [Como crear un responder](gestion-de-incidentes/responders-doc/como-crear-un-responder.md#cómo-escribir-un-responder)
 - [Como ejecutar un responder](gestion-de-incidentes/responders-doc/ejecutar-responder.md#como-ejecutar-un-responder)
-## ML
 
-Agregar **todo**
+## Deteccion de intrusiones utilizando Machine Learning
+
+De forma paralela, se desarrollo un Sistema de Deteccion de Intrusiones (IDS) utilizando un algoritmo de Arbol de Decision, el cual fue entrenado con datos propios
+de las dependencias de la Universidad. El sistema clasifica los flujos de conexiones en alguno de los siguientes tipos:
+
++ Trafico Benigno
++ Escaneo de puertos
++ Ataque de denegacion de servicio
++ Ataque de inyeccion SQL
++ Acceso a SSH por fuerza bruta
+
+El mismo sistema se encarga de generar alertas, las cuales se almacenan en un log llamado **alert.log**. Los datos de las alertas son enviados al servidor master
+de Security Onion.
+
+### Requerimientos
+
+
