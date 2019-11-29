@@ -82,6 +82,7 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 - [Updating](admin/updating.md)
 - [Backup & Restore](admin/backup-restore.md)
 - [Migration Guide](migration-guide.md)
+- [Guía de Configuracion de Logstash](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master/security-onion/master/logstash/master-logstash-guide.md#gu%C3%ADa-de-configuracion-de-logstash)
 
 ### Nodo Forward
 
