@@ -8,6 +8,7 @@ En esta guia contiene la configuracion para logstash
   * [Configuracion general](#configuracion-general)
   * [Filtros](#filtros)
     - [Expresiones regulares](#expresiones-regulares)
+  * [Link Documentacion Security onion](#link-documentacion-security-onion)
 
 ### Configuracion general
 Estas son algunas de las configuraciones que puede necesitar para ajustar `/etc/logstash/logstash.yml`.
@@ -52,3 +53,6 @@ Los fitros de logstash usan un plug in grok para realizar el parseo de la inform
 * https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
 * http://grokdebug.herokuapp.com/
 * http://grokconstructor.appspot.com/
+
+## Link Documentacion Security onion
+* https://securityonion.readthedocs.io/en/latest/logstash.html#
