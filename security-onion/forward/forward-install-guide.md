@@ -27,15 +27,15 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 ### Creación de Maquina Virtual
 
 1. En la sección **Virtual Machines** seleccionar **Create / Register VM** y en la ventana que aparece, *Next*.
-2. Definir un **nombre** para la maquina virtual (e.g. sonion-forward-fcefyn) y selecciona la familia de sistema operativo **Linux**; version **Ubuntu Linux (64-bit)**
+2. Definir un **nombre** para la maquina virtual (e.g. sonion-forward-fcefyn) y selecciona la familia de sistema operativo **Linux**; version **Ubuntu Linux (64-bit)**.
 3. Seleccionar el **disco físico** en donde se creara la maquina virtual con suficiente espacio para crear los discos duros virtuales.
 4. Configuración de componentes (valores a modo de ejemplo para una red con 250Mbps promedio):
     * CPU: 8
     * Memory: 16 GB
     * Hard Disk 1: 50 GB - Thin Provisioned
-    * Hard Disk 2: *Tamaño suficiente para cumplir con la política de retención* - Thick Provisioned (este disco es el que almacenará la captura de paquetes, se llenará rápidamente)
-    * Network Adapter 1: *Vlan de manejo de CSIRT*
-    * Network Adapter 2: *Mirror port del trafico a monitorear*\*
+    * Hard Disk 2 (Agregar nuevo disco duro): *Tamaño suficiente para cumplir con la política de retención* - Thick Provisioned (este disco es el que almacenará la captura de paquetes, se llenará rápidamente)
+    * Network Adapter 1: *Vlan de administración de CSIRT*
+    * Network Adapter 2 (Agregar nuevo adaptador de red): *Mirror port del trafico a monitorear*\*
     * CD/DVD Drive 1: *Datastore ISO file* (seleccionar el iso de Security Onion)
 5. Finaliza la creación de la maquina virtual.
 
@@ -53,7 +53,7 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 5. Navegar y seleccionar **Argentina** (other -> South America -> Argentina)
 6. Seleccionar **United States - en_US.UTF-8**.
 7. Al preguntar "Detect keyboard layout" seleccionar **No** y en las siguientes dos pantallas seleccionar **Spanish (Latin America)**.
-8. Cuando falla la configuración de la red con DHCP continuar y al solicitar "Network configuration method" seleccionar **Configure network manually**
+8. En la sección de configuración de hardware de red, como hay dos interfaces de red seleccionar la primera como primaria. La instalación intentara auto-configurarse, cuando falla la configuración de la red con DHCP continuar y al solicitar "Network configuration method" seleccionar **Configure network manually**
     - Ingresar la **dirección IP** que debe tener el servidor, la **mascara de red** y la **dirección IP gateway**.
     - Ingresar las direcciones IP de hasta 3 **servidores DNS**, separados por espacios.
 9. Ingresar los nombres solicitados y seleccionar una contraseña, valores/formato sugerido:
@@ -64,11 +64,11 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 10. Al preguntar "Encrypt your home directory?" seleccionar **No**.
 11. Confirmar la zona horaria detectada (o configurar un servidor NTP)
 12. Al colicitar "Partitioning method" seleccionar **Guided - use entire disk**.
-13. Seleccionar el primer disco duro (**/dev/sda**, el mas pequeño).
+13. Seleccionar el primer disco duro (**sda** o **/dev/sda**, el mas pequeño).
 14. Confirmar los cambios seleccionados (escribiendo los cambios al disco) y continuar.
 15. Al solicitar información sobre un HTTP proxy simplemente continuar.
 16. Al preguntar "How do you want to manage upgrades on this system?" seleccionar **No automatic updates**.
-17. Al solicitar el software a instalar solo dejar seleccionado **standard system utilities** y **OpenSSH Server** y continuar.
+17. Al solicitar el software a instalar solo dejar seleccionado (con la barra espaciadora) **standard system utilities** y **OpenSSH Server** y continuar.
 18. Al preguntar "Install the GRUB boot loader to the master boot record" seleccionar **Yes** (si pregunta en que disco, seleccionar /dev/sda).
 19. Seleccionar **Continue** para finalizar la instalación, la maquina sera reiniciada.
 
@@ -76,9 +76,11 @@ Con esto ya se puede acceder al servidor por ssh y realizar el resto de la insta
 
 ### Montado de segundo disco duro al directorio /nsm
 
+En la carpeta */nsm* se almacenaran las capturas de paquetes del sensor.
+
 Instrucciones adaptadas desde [aquí](https://securityonion.readthedocs.io/en/latest/new-disk.html)
 
-1. Determinar la path del disco (por defecto suele ser **/dev/sdb**):
+1. Determinar la dirección del segundo disco a montar (por defecto suele ser **/dev/sdb**):
 ```bash
 sudo fdisk -l
 ```
@@ -86,28 +88,12 @@ sudo fdisk -l
 ```bash
 sudo fdisk /dev/sdb
 ```
-  * Ingresar la opcion `n` para crear una nueva partición y dejar todas las opciones solicitadas en sus valores por defecto. Luego ingresar `w` para escribir los cambios al disco.
+  * Ingresar la opción `n` para crear una nueva partición y dejar todas las siguientes opciones solicitadas en sus valores por defecto. Luego ingresar la opción `w` para escribir los cambios al disco.
 3. Formatear la nueva partición usando mkfs
 ```bash
 sudo mkfs.ext4 /dev/sdb1
 ```
-4. Montar la nueva unidad en una ubicación temporal en el sistema de archivos:
-```bash
-sudo mount /dev/sdb1 /mnt
-```
-5. Copiar los datos existentes de /nsm a la ubicación temporal:
-```bash
-sudo cp -av /nsm/* /mnt/
-```
-6. Desmontar la nueva unidad desde la ubicación temporal:
-```bash
-sudo umount /mnt
-```
-7. Cambiar el nombre del /nsm existente:
-```bash
-sudo mv /nsm /nsm-backup
-```
-8. Actualicar /etc/fstab para montar la nueva unidad en /nsm:
+4. Actualicar /etc/fstab para montar la nueva unidad en /nsm:
 ```bash
 sudo nano /etc/fstab
 ```
@@ -115,16 +101,16 @@ sudo nano /etc/fstab
 ```bash
 sudo blkid /dev/sdb1
 ```
-  * Agregar a /etc/fstab, reeplazando `<buscarUUID>`:
+  * Agregar a /etc/fstab, reeplazando `<buscarUUID>` con UUID resultado el del comando anterior:
 ```
 # mount /dev/sdb1 to /nsm
 UUID=<buscarUUID> /nsm ext4 defaults 0 2
 ```
-9. Volver a crear el directorio /nsm después de cambiarle el nombre:
+5. Crear el directorio /nsm:
 ```bash
 sudo mkdir /nsm
 ```
-10. Montar el nuevo /nsm:
+6. Montar el nuevo /nsm:
 ```bash
 sudo mount /dev/sdb1 /nsm
 ```
