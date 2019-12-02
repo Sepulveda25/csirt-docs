@@ -172,3 +172,4 @@ de las dependencias de la Universidad. El sistema clasifica los flujos de conexi
 El mismo sistema se encarga de generar alertas, las cuales se almacenan en un log llamado **alert.log**. Los datos de las alertas son enviados al servidor master
 de Security Onion.
 
+[Guia de uso](ml_implementation)
