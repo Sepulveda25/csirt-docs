@@ -36,7 +36,7 @@ El CSIRT esta compuesto por tres partes: NSM, SIEM y Machine Learning
   * [Gestion de incidentes](#gestión-de-incidentes)
     * [TheHive](#thehive)
     * [Cortex](#cortex)
-  * [ML](#Deteccion de intrusiones utilizando Machine Learning)
+  * [ML](#deteccion-de-intrusiones-utilizando-machine-learning)
 
 ## Security Onion
 
@@ -76,10 +76,9 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 #### Guías
 
 - [Guía de Instalación](security-onion/master/master-install-guide.md)
-- [Guía de Administración](admin/admin-guide.md)
+- [Guía de Administración](security-onion/security-onion-administration-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Cluster Configuration](admin/cluster.md)
-- [Updating](admin/updating.md)
 - [Backup & Restore](admin/backup-restore.md)
 - [Migration Guide](migration-guide.md)
 - [Guía de Configuracion de Logstash](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master/security-onion/master/logstash/master-logstash-guide.md#gu%C3%ADa-de-configuracion-de-logstash)
@@ -121,7 +120,6 @@ Link a documento especificando las pruebas realizadas (?)
 - [Guía de Administración](admin/admin-guide.md)
 - [Guía de Configuración](admin/configuration.md)
 - [Cluster Configuration](admin/cluster.md)
-- [Updating](admin/updating.md)
 - [Backup & Restore](admin/backup-restore.md)
 - [Migration Guide](migration-guide.md)
 - [API Documentation](api/README.md) (incomplete)

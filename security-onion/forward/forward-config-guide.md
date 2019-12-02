@@ -155,3 +155,4 @@ cp $3 /etc/nsm/rules/classification.config
 
 Se instala y se configura Telegraf para recopilar e informar métricas a un servidor de Grafana
 
+
