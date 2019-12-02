@@ -23,11 +23,11 @@ Un CSIRT no solo responde necesariamente a incidentes que ya han sucedido. Un CS
 
 #### Partes del CSIRT
 
-El CSIRT esta compuesto por tres partes: NSM, SIEM y ML
+El CSIRT esta compuesto por tres partes: NSM, SIEM y Machine Learning
 
 1. NSM (Monitoreo de seguridad de red) - Proporciona contexto, inteligencia y conciencia situacional de la red.
 2. SIEM (Gestión de información y eventos de seguridad) - Se encaraga de almacenar la informacion recolectada para poder consultarla a futuro
-3. ML () - lashdfboaiwf
+3. ML  - Deteccion de intrusiones utilizando técnicas de Machine Learning
 
 ## Tabla de Contenidos
   * [Security Onion](#security-onion)
@@ -172,4 +172,4 @@ de las dependencias de la Universidad. El sistema clasifica los flujos de conexi
 El mismo sistema se encarga de generar alertas, las cuales se almacenan en un log llamado **alert.log**. Los datos de las alertas son enviados al servidor master
 de Security Onion.
 
-[Guia de uso](ml_implementation)
+- [Guia de uso](/csirt/ml_implementation)
