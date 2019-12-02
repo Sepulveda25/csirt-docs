@@ -36,7 +36,7 @@ El CSIRT esta compuesto por tres partes: NSM, SIEM y Machine Learning
   * [Gestion de incidentes](#gestión-de-incidentes)
     * [TheHive](#thehive)
     * [Cortex](#cortex)
-  * [ML](#ml)
+  * [ML](#Deteccion de intrusiones utilizando Machine Learning)
 
 ## Security Onion
 
@@ -172,4 +172,4 @@ de las dependencias de la Universidad. El sistema clasifica los flujos de conexi
 El mismo sistema se encarga de generar alertas, las cuales se almacenan en un log llamado **alert.log**. Los datos de las alertas son enviados al servidor master
 de Security Onion.
 
-- [Guia de uso](/csirt/ml_implementation)
+- [Guia de uso](https://gitlab.unc.edu.ar/csirt/ml_implementation)
