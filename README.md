@@ -57,7 +57,7 @@ Se basa en un modelo distribuido cliente-servidor modificado. Una implementació
 ### Servidor Master
 
 - [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
-- [Guía de Administración](security-onion/security-onion-administration-guide.md)
+- [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
 - [Guía de Configuración de Logstash](security-onion/master/logstash/master-logstash-guide.md#guía-de-configuracion-de-logstash)
 
 El servidor maestro ejecuta su propia copia local de Elasticsearch, que administra la configuración de búsqueda entre clústeres para la implementación. Esto incluye la configuración para Nodos Storage, pero no para Nodos Forward, ya que no ejecutan componentes de Elastic Stack. Un analista se puede conectar al servidor desde una estación de trabajo cliente para ejecutar consultas y recuperar datos.
@@ -86,6 +86,7 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 
 - [Guía de Requerimientos de Hardware](security-onion/forward/forward-hardware-guide.md#guía-de-requerimientos-de-hardware-de-un-nodo-forward)
 - [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
+- [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
 - [Guía de Configuración (TO-DO)](admin/configuration.md)
 
 Cuando se usa un Nodo Forward, los componentes de Elastic Stack no están instalados. Syslog-NG reenvía todos los registros a Logstash en el servidor maestro a través de un túnel autossh, donde se almacenan en Elasticsearch en el servidor maestro, o se reenvían a la instancia Elasticsearch del nodo de almacenamiento (si el servidor maestro se ha configurado para usar un nodo de almacenamiento). A partir de ahí, los datos pueden consultarse mediante el uso de la búsqueda búsqueda cruzada entre clústeres.
