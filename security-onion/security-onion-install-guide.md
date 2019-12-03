@@ -1,22 +1,20 @@
-# Guía de Instalación de Servidor Master
+# Guía de Instalación de Security Onion
 
-En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un servidor master.
+En la siguiente guía se especifican los pasos a seguir junto con los valores sugeridos para realizar la instalación de Security Onion y prepararlo para ser usado como un nodo forward o como un servidor master.
 
 [Volver a documento raíz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
 
 ## Tabla de Contenidos
-  * [Virtualización para un Servidor Master](#virtualización-para-un-servidor-master)
-  * [Instalacion de Security Onion](#instalación-de-security-onion)
+  * [Virtualización para un Security Onion](#virtualización-para-un-security-onion)
+  * [Instalación de Ubuntu Server](#instalación-de-ubuntu-server)
     - [Instalación del sistema operativo](#instalación-del-sistema-operativo)
-    - [Configuración de interfaz de red de administración](#configuración-de-interfaz-de-red-de-administración)
     - [Montado de segundo disco duro al directorio /nsm](#montado-de-segundo-disco-duro-al-directorio-nsm)
-  * [Servidor Master - Opciones de Instalación](#servidor-master-opciones-de-instalación)
+  * [Instalación y configuración de Security Onion](#instalación-y-configuración-de-security-onion)
     - [Ansible](#ansible)
-    - [Scripts](#scripts)
 
-## Virtualización para un Servidor Master
+## Virtualización para un Security Onion
 
-Instrucciones de creación de una maquina virtual por si se desea instalar un servidor master en un entorno virtualizado.
+Instrucciones de creación de una maquina virtual por si se desea instalar un Security Onion en un entorno virtualizado.
 
 Esta guía se basa en el uso del entorno VMWare ESXI
 
@@ -27,16 +25,19 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 ### Creación de Maquina Virtual
 
 1. En la sección **Virtual Machines** seleccionar **Create / Register VM** y en la ventana que aparece, *Next*.
-2. Definir un **nombre** para la maquina virtual (e.g. sonion-master) y selecciona la familia de sistema operativo **Linux**; version **Ubuntu Linux (64-bit)**
+2. Definir un **nombre** para la maquina virtual (e.g. sonion-forward-fcefyn) y selecciona la familia de sistema operativo **Linux**; version **Ubuntu Linux (64-bit)**.
 3. Seleccionar el **disco físico** en donde se creara la maquina virtual con suficiente espacio para crear los discos duros virtuales.
-4. Configuración de componentes (valores a modo de ejemplo para una red con 250Mbps promedio):
+4. Configuración de componentes (valores a modo de ejemplo para un nodo forward monitoreando una red con 250Mbps promedio):
     * CPU: 8
-    * Memory: 32 GB
+    * Memory: 16 GB
     * Hard Disk 1: 50 GB - Thin Provisioned
-    * Hard Disk 2 (Agregar nuevo disco duro): *Tamaño suficiente para cumplir con la política de retención* - Thin Provisioned
+    * Hard Disk 2 (Agregar nuevo disco duro): *Tamaño suficiente para cumplir con la política de retención* - Thin Provisioned (este disco es el que almacenará la captura de paquetes en el nodo forward o los logs recolectados en el servidor master)
     * Network Adapter 1: *Vlan de administración de CSIRT*
+    * Solo Nodo Forward: Network Adapter 2 (Agregar nuevo adaptador de red): *Mirror port del trafico a monitorear*\*
     * CD/DVD Drive 1: *Datastore ISO file* (seleccionar el iso de Ubuntu Server)
 5. Finaliza la creación de la maquina virtual.
+
+\* La interfaz virtual que recibe el trafico mirroreado debe tener configurado en su switch virtual que acepte trafico en modo promiscuo (ver opciones de seguridad).
 
 ## Instalación de Ubuntu Server
 
@@ -50,18 +51,18 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 5. Navegar y seleccionar **Argentina** (other -> South America -> Argentina)
 6. Seleccionar **United States - en_US.UTF-8**.
 7. Al preguntar "Detect keyboard layout" seleccionar **No** y en las siguientes dos pantallas seleccionar **Spanish (Latin America)**.
-8. En la sección de configuración de hardware de red la instalación intentara auto-configurarse, cuando falla la configuración de la red con DHCP continuar y al solicitar "Network configuration method" seleccionar **Configure network manually**
+8. En la sección de configuración de hardware de red (en el nodo forward, como hay dos interfaces de red seleccionar la primera como primaria). La instalación intentara auto-configurarse, cuando falla la configuración de la red con DHCP continuar y al solicitar "Network configuration method" seleccionar **Configure network manually**
     - Ingresar la **dirección IP** que debe tener el servidor, la **mascara de red** y la **dirección IP gateway**.
     - Ingresar las direcciones IP de hasta 3 **servidores DNS**, separados por espacios.
 9. Ingresar los nombres solicitados y seleccionar una contraseña, valores/formato sugerido:
-    - Hostname: "**sonion-master**"
+    - Hostname: "**[dependencia]-[servicio]-[versión]**" (e.g. *fcefyn-csirt-sonion-forward-v1* o *sonion-master*)
     - Domain name
-    - Full name: "**sonionmaster**"
-    - Username: "**sonionmaster**"
+    - Full name: "**sonion[codigo_dependencia]**" (e.g. *sonionfcefyn* o *sonionmaster*)
+    - Username: "**sonion[codigo_dependencia]**" (e.g. *sonionfcefyn* o *sonionmaster*)
 10. Al preguntar "Encrypt your home directory?" seleccionar **No**.
 11. Confirmar la zona horaria detectada (o configurar un servidor NTP)
-12. Al colicitar "Partitioning method" seleccionar **Guided - use entire disk**.
-13. Seleccionar el primer disco duro (**sda** o /dev/sda**, el mas pequeño).
+12. Al solicitar "Partitioning method" seleccionar **Guided - use entire disk**.
+13. Seleccionar el primer disco duro (**sda** o **/dev/sda**, el mas pequeño).
 14. Confirmar los cambios seleccionados (escribiendo los cambios al disco) y continuar.
 15. Al solicitar información sobre un HTTP proxy simplemente continuar.
 16. Al preguntar "How do you want to manage upgrades on this system?" seleccionar **No automatic updates**.
@@ -72,6 +73,8 @@ Esta guía se basa en el uso del entorno VMWare ESXI
 Con esto ya se puede acceder al servidor por ssh y realizar el resto de la instalación.
 
 ### Montado de segundo disco duro al directorio /nsm
+
+En la carpeta */nsm* se almacenaran las capturas de paquetes del nodo forward o los logs recolectados por el servidor master.
 
 Instrucciones adaptadas desde [aquí](https://securityonion.readthedocs.io/en/latest/new-disk.html)
 
@@ -96,12 +99,12 @@ sudo nano /etc/fstab
 ```bash
 sudo blkid /dev/sdb1
 ```
-  * Agregar a /etc/fstab, reeplazando `<buscarUUID>` con el UUID resultado del comando anterior:
+  * Agregar a /etc/fstab, reeplazando `<buscarUUID>` con UUID resultado del comando anterior:
 ```
 # mount /dev/sdb1 to /nsm
 UUID=<buscarUUID> /nsm ext4 defaults 0 2
 ```
-5. Volver a crear el directorio /nsm después de cambiarle el nombre:
+5. Crear el directorio /nsm:
 ```bash
 sudo mkdir /nsm
 ```
@@ -110,14 +113,10 @@ sudo mkdir /nsm
 sudo mount /dev/sdb1 /nsm
 ```
 
-## Servidor Master - Opciones de Instalación
+## Instalación y configuración de Security Onion
 
-Hay dos formas de preparar Security Onion para ser utilizado como un servidor master: Utilizando playbooks de ansible o scripts programados en bash.
+El Ubuntu Server se puede preparar para ser utilizado como un nodo forward o un servidor master utilizando playbooks de ansible.
 
 ### Ansible
 
 [Repositorio con instrucciones para usar ansible](https://gitlab.unc.edu.ar/csirt/sonion-config-ansible)
-
-### Scripts
-
-[Repositorio con instrucciones para usar scripts bash](https://gitlab.unc.edu.ar/csirt/sonion-config-scripts/tree/master/masterstorage_config_script)
