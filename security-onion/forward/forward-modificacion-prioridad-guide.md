@@ -1,5 +1,7 @@
 # Guía de modificacion de prioridades 
 
+[Volver a documento raíz](https://gitlab.unc.edu.ar/csirt/csirt-docs/tree/master#csirt-docs)
+
 Se puede modificar las prioridades de las alertas de suricata que vienen por defecto. Las prioridades van desde 1 a 255 donde 1 es la prioridad mas alta y 255 la mas baja. Generalmente se utiliza un rango de prioridades de 1 a 4. 
 
 Las reglas de suricata estan separadas por categoria. Las prioridades se pueden cambiar a una categoria o a una regla en particular, esto ultimo no es recomendable ya que las reglas se actualizan cada cierto tiempo y es tedioso cambiar cada una de las millones de reglas.
