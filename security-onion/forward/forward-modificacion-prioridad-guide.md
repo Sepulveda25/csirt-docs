@@ -56,4 +56,7 @@ config classification: unusual-client-port-connection,A client was using an unus
 config classification: web-application-activity,access to a potentially vulnerable web application,1
 config classification: web-application-attack,Web Application Attack,1
 ```
+## Fuentes
+* https://suricata.readthedocs.io/en/suricata-4.1.4/rules/meta.html?highlight=classification
+* http://manual-snort-org.s3-website-us-east-1.amazonaws.com/node31.html
 
