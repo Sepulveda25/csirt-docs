@@ -88,7 +88,7 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 - [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
 - [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
 - [Guía de Configuración (TO-DO)](admin/configuration.md)
-- [Guía de modificacion de prioridades IDS](https://gitlab.unc.edu.ar/-/ide/project/csirt/csirt-docs/blob/master/-/security-onion/forward/forward-modificacion-prioridad-guide.md#guía-de-modificacion-de-prioridades)
+- [Guía de modificacion de prioridades IDS](security-onion/forward/forward-modificacion-prioridad-guide.md#guía-de-modificacion-de-prioridades )
 
 Cuando se usa un Nodo Forward, los componentes de Elastic Stack no están instalados. Syslog-NG reenvía todos los registros a Logstash en el servidor maestro a través de un túnel autossh, donde se almacenan en Elasticsearch en el servidor maestro, o se reenvían a la instancia Elasticsearch del nodo de almacenamiento (si el servidor maestro se ha configurado para usar un nodo de almacenamiento). A partir de ahí, los datos pueden consultarse mediante el uso de la búsqueda búsqueda cruzada entre clústeres.
 
