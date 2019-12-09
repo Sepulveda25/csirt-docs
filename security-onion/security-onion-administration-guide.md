@@ -11,14 +11,14 @@ En la siguiente guia se detalla la informacion para gestionar y administrar las 
 * [Nada](#actualización)
 * [Mas](#actualización)
 
-### Actualización
+## Actualización
 
 Se recomienda utilizar los scripts propios de Security Onion para actualizar el sistema.
 
 [Link a guia de actualizacion](https://securityonion.readthedocs.io/en/latest/upgrade.html)
 
 
-### Salt
+## Salt
 
 Security Onion ofrece una herramienta para administrar multiples nodos forward con facilidad: Salt.
 
@@ -34,3 +34,42 @@ INSTALL_SALT: 'yes'
 Para mas informacion, puede leer la guía oficial:
 
 [Guía de Salt](https://securityonion.readthedocs.io/en/latest/salt.html)
+
+## Nodo Forward
+
+### Guía de visualización de perdidas
+
+En un nodo forward se puede utilizar un script desarrollado por Security Onion y modificado para solamente visualizar las perdidas en las distintas herramientas de captura y procesamiento. El script original que esta en el nodo forward se llama *sostat* (/usr/sbin/sostat).
+
+[Script de visualización de perdidas]($2)
+
+Ejecutar este script con sudo:
+```bash
+sudo ./sostat_packet_loss
+```
+
+#### Estadísticas de perdidas
+
+##### NIC
+Indica si hay perdidas en la interfaz de red física/virtual de la computadora.
+
+##### pf_ring
+Indica si el balanceador de carga observa perdidas a cada instancia/proceso de Suricata. La suma de las perdidas es igual a los valores de la siguiente sección.
+
+##### IDS Engine (suricata) packet drops
+Indica si hay perdida de paquetes en Suricata. Si la el porcentaje de paquetes perdidos es muy alto puede considerar:
+- Aumentar la cantidad de procesos y fijarlos (ver afinidad de CPU) de Suricata en los parámetros de instalación con ansible.
+- Aumentar la cantidad de RAM del nodo.
+
+##### Bro
+Indica si hay perdida de paquetes en Bro. Si la el porcentaje de paquetes perdidos es muy alto puede considerar:
+- Aumentar la cantidad de procesos y fijarlos (ver afinidad de CPU) de Bro en los parámetros de instalación con ansible.
+- Aumentar la cantidad de RAM del nodo.
+
+##### Netsniff-NG
+Indica si netsniff-ng pierde paquetes al capturar trafico en una interfaz. Si  informa una pérdida de paquetes, puede considerar una o más de las siguientes opciones en */etc/nsm/HOSTNAME-INTERFACE/sensor.conf* o en los parámetros de instalación con ansible:
+- aumentar PCAP_RING_SIZE.
+- agregar a PCAP_OPTIONS la opción --mmap para habilitar IO mapeado en memoria.
+- agregar a PCAP_OPTIONS la opción -b0 fara fijar el proceso en el núcleo de procesador 0.
+
+Tenga en cuenta que todas las opciones harán que netsniff-ng consuma más RAM.
