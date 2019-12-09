@@ -1,9 +1,12 @@
 # csirt-docs
 
-Documentación general del CSIRT
+Documentación general del CSIRT UNC
 
 ## Tabla de Contenidos
   * [El CSIRT UNC](#el-csirt-unc)
+    * [La misión del CSIRT UNC](#la-misión-del-csirt-unc)
+    * [Partes del CSIRT](#partes-del-csirt)
+    * [Arquitectura del CSIRT](#arquitectura-del-csirt)
   * [Security Onion](#security-onion)
     * [Servidor Master](#servidor-master)
     * [Nodo Forward](#nodo-forward)
@@ -18,7 +21,7 @@ Cuando ocurre un incidente de seguridad, una organización necesita una forma de
 
 Un CSIRT no solo responde necesariamente a incidentes que ya han sucedido. Un CSIRT también puede proporcionar servicios y funciones proactivos, como pruebas de penetración, detección de intrusiones o incluso capacitación en conciencia de seguridad. Estos tipos de servicios pueden ayudar a prevenir incidentes, pero también aumentan el tiempo de respuesta y mitigan los daños. En el caso de que un incidente de seguridad deba ser contenido y mitigado, el CSIRT coordina y supervisa estos esfuerzos.
 
-### La misión del equipo de CSIRT
+### La misión del CSIRT UNC
 
 + Proporcionar un servicio de respuesta sistemática a los incidentes de ciberseguridad apoyando a las dependencias de la UNC a través del uso de la mejor tecnología disponible.
 + Sensibilizar en seguridad de las tecnologías de información y comunicación.
@@ -40,6 +43,16 @@ El CSIRT esta compuesto por tres partes: NSM, SIEM y Machine Learning
 3. ML (Aprendizaje automático) - Detección de intrusiones utilizando técnicas de Machine Learning
 
 ### Arquitectura del CSIRT
+
+La arquitectura del CSIRT esta formado por varias computadoras y servicios interconectados.
+
+Hay una o varias maquinas llamadas **nodo forward**, en cada uno se tiene un IDS que hace la detección de un posible incidente. El tráfico de red es  capturado y procesado por distintas herramientas, generando alertas de intrusión o de comportamientos notables/inusuales. Los datos procesados pueden ser datos de contenido completo, datos de alertas, datos de activos, datos de host, datos de transacción y/o datos de sesión.
+
+En una maquina llamada **servidor master** se realiza la gestión y análisis de alertas. Alertas previamente generadas (de un nodo forward por ejemplo) son recibidas, normalizadas y almacenadas. Se pueden realizar análisis directos o se pueden enviar alertas hacia otras aplicaciones bajo ciertas condiciones.
+
+Las maquinas servidor master y nodo forward son basados en el suite de herramientas **Security Onion**.
+
+En una maquina se tiene **TheHive y Cortex** que facilita la gestión de incidentes y la automatización de respuestas ante los mismos. Alertas son filtradas en el servidor master y enviadas a TheHive usando ElastAlert. 
 
 ![Arquitectura del CSIRT UNC](images/csirt-architecture.png)
 
@@ -95,11 +108,11 @@ Cuando se usa un Nodo Forward, los componentes de Elastic Stack no están instal
 
 Los Nodos Forward ejecutan los siguientes componentes (modo de producción con mejores prácticas):
 
-+ Bro
-+ Snort / Suricata
-+ Netsniff-NG
-+ OSSEC
-+ Syslog-NG
++ Bro (NIDS)
++ Suricata (NIDS)
++ Netsniff-NG (captura de paquetes de red)
++ OSSEC (HIDS)
++ Syslog-NG (envió de logs)
 
 #### Requisitos de Hardware
 
