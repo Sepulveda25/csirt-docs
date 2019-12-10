@@ -319,6 +319,7 @@ responder {
 Todos los Analyzers y Responders deben configurarse utilizando la interfaz de usuario web. En la próxima sección se explicara como crear al menos una organización y luego permita que un usuario con el rol `orgAdmin` configure y habilite los analizadores para esa organización. 
 
 ##### Guía de inicio rápido
+`SI LA INSTALACION SE REALIZO CON ANSIBLE SALTAR EL PASO 1`
 
 ###### Paso 1: Configurar Cortex
 
