@@ -7,13 +7,14 @@ Documentación general del CSIRT UNC
     * [La misión del CSIRT UNC](#la-misión-del-csirt-unc)
     * [Partes del CSIRT](#partes-del-csirt)
     * [Arquitectura del CSIRT](#arquitectura-del-csirt)
-  * [Security Onion](#security-onion)
-    * [Servidor Master](#servidor-master)
-    * [Nodo Forward](#nodo-forward)
-  * [Gestion de incidentes](#gestión-de-incidentes)
+  * [NSM](#nsm)  
+    * [Security Onion](#security-onion)
+      * [Servidor Master](#servidor-master)
+      * [Nodo Forward](#nodo-forward)
+    * [Deteccion de intrusiones utilizando Machine Learning](#deteccion-de-intrusiones-utilizando-machine-learning)
+  * [SIEM](#siem)
     * [TheHive](#thehive)
     * [Cortex](#cortex)
-  * [Deteccion de intrusiones utilizando Machine Learning](#deteccion-de-intrusiones-utilizando-machine-learning)
 
 ## El CSIRT UNC
 
@@ -35,27 +36,28 @@ Un CSIRT no solo responde necesariamente a incidentes que ya han sucedido. Un CS
 
 ### Partes del CSIRT
 
-El CSIRT esta compuesto por tres partes: NSM, SIEM y Machine Learning
+El CSIRT esta compuesto por dos partes: NSM y SIEM
 
 1. NSM (Monitoreo de seguridad de red) - Proporciona contexto, inteligencia y conciencia situacional de la red.
-2. SIEM (Gestión de información y eventos de seguridad) - Se encaraga de almacenar la informacion recolectada para poder consultarla a futuro
-3. ML (Aprendizaje automático) - Detección de intrusiones utilizando técnicas de Machine Learning
+2. SIEM (Gestión de información y eventos de seguridad) - Se encaraga de almacenar la informacion recolectada para poder consultarla a futuro.
 
 ### Arquitectura del CSIRT
 
 La arquitectura del CSIRT esta formado por varias computadoras y servicios interconectados.
 
-Hay una o varias maquinas llamadas **nodo forward**, en cada uno se tiene un IDS que hace la detección de un posible incidente. El tráfico de red es  capturado y procesado por distintas herramientas, generando alertas de intrusión o de comportamientos notables/inusuales. Los datos procesados pueden ser datos de contenido completo, datos de alertas, datos de activos, datos de host, datos de transacción y/o datos de sesión.
+Hay una o varias maquinas llamadas **nodo forward**, en cada uno se tiene un IDS que hace la detección de un posible incidente. El tráfico de red es capturado y procesado por distintas herramientas, generando alertas de intrusión o de comportamientos notables/inusuales. Los datos procesados pueden ser datos de contenido completo, datos de alertas, datos de activos, datos de host, datos de transacción y/o datos de sesión.
 
 En una maquina llamada **servidor master** se realiza la gestión y análisis de alertas. Alertas previamente generadas (de un nodo forward por ejemplo) son recibidas, normalizadas y almacenadas. Se pueden realizar análisis directos o se pueden enviar alertas hacia otras aplicaciones bajo ciertas condiciones.
 
-Las maquinas servidor master y nodo forward son basados en el suite de herramientas **Security Onion**.
+La maquina servidor master, asi como tambien algunos de los nodos forward, son basados en el suite de herramientas **Security Onion**. El resto de los nodos forward son simples maquinas virtuales corriendo un IDS propio construido con tecnicas de Machine Learning.
 
 En una maquina se tiene **TheHive y Cortex** que facilita la gestión de incidentes y la automatización de respuestas ante los mismos. Alertas son filtradas en el servidor master y enviadas a TheHive usando ElastAlert. 
 
 ![Arquitectura del CSIRT UNC](images/csirt-architecture.png)
 
-## Security Onion
+## NSM
+
+### Security Onion
 
 Security Onion es un suite de herramientas gratuita y de código abierto desarrollado para detección de intrusos, monitoreo de seguridad empresarial y gestión de logs. Se distribuye en forma de una distribución de Linux o como grupos de paquetes de software descargables.
 
@@ -66,7 +68,7 @@ Entrelaza sin problemas tres funciones principales:
 
 Se basa en un modelo distribuido cliente-servidor modificado. Una implementación distribuida estándar está compuesta por el servidor maestro (Servidor Master), uno o más nodos de reenvío (Nodos Forward) y uno o más nodos de almacenamiento (Nodos Storage). Esta arquitectura es ideal; Si bien puede costar más por adelantado, esta arquitectura proporciona una mayor escalabilidad y rendimiento en el futuro, ya que uno simplemente puede "conectar" nuevos nodos de almacenamiento para manejar más tráfico o fuentes de logs.
 
-### Servidor Master
+#### Servidor Master
 
 - [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
 - [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
@@ -86,7 +88,7 @@ El servidor maestro ejecuta los siguientes componentes (modo de producción con 
 + OSSEC
 + Sguild
 
-#### Requisitos de Hardware
+##### Requisitos de Hardware
 
 Un servidor maestro empresarial debe tener 8 núcleos de CPU como mínimo, 16-128 GB de RAM y suficiente espacio en disco (se recomiendan varios terabytes) para cumplir con sus requisitos de retención de logs. Los requerimientos pueden variar dependiendo de la cantidad de logs nuevos que son recibidos y de la cantidad de consultas que se realizan a los logs ya almacenados.
 
@@ -95,7 +97,7 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 + Núcleos CPU:
 + RAM:
 
-### Nodo Forward
+#### Nodo Forward
 
 - [Guía de Requerimientos de Hardware](security-onion/forward/forward-hardware-guide.md#guía-de-requerimientos-de-hardware-de-un-nodo-forward)
 - [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
@@ -113,7 +115,7 @@ Los Nodos Forward ejecutan los siguientes componentes (modo de producción con m
 + OSSEC (HIDS)
 + Syslog-NG (envió de logs)
 
-#### Requisitos de Hardware
+##### Requisitos de Hardware
 
 Ver "Guía de Requerimientos de Hardware" abajo..
 
@@ -121,17 +123,33 @@ Hardware necesario dependiendo de la cantidad de trafico
 
 Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 
-##### Trafico sostenido promedio <200Mbps
+###### Trafico sostenido promedio <200Mbps
 + Núcleos CPU:
 + RAM:
 
-##### Trafico sostenido promedio >200Mbps & <500(?)Mbps
+###### Trafico sostenido promedio >200Mbps & <500(?)Mbps
 + Núcleos CPU:
 + RAM:
 
 Link a documento especificando las pruebas realizadas (?)
 
-## Gestión de incidentes
+### Deteccion de intrusiones utilizando Machine Learning
+
+- [Guia de uso](https://gitlab.unc.edu.ar/csirt/ml_implementation)
+
+De forma paralela, se desarrollo un Sistema de Deteccion de Intrusiones (IDS) utilizando un algoritmo de Arbol de Decision, el cual fue entrenado con datos propios
+de las dependencias de la Universidad. El sistema clasifica los flujos de conexiones en alguno de los siguientes tipos:
+
++ Trafico Benigno
++ Escaneo de puertos
++ Ataque de denegacion de servicio
++ Ataque de inyeccion SQL
++ Acceso a SSH por fuerza bruta
+
+El mismo sistema se encarga de generar alertas, las cuales se almacenan en un log llamado **alert.log**. Los datos de las alertas son enviados al servidor master
+de Security Onion.
+
+## SIEM
 
 - [Guía de Instalación](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
 - [Guía de Configuración](admin/configuration.md)
@@ -159,19 +177,3 @@ TheHive es una plataforma de respuesta a incidentes de seguridad gratuita y de c
 
 ### Cortex
 Es una herramienta que sirve para analizar los Observables enviados a TheHive. Se pueden ejecutar operaciones mediante Responders que utilizan los Observables como variables de entrada. El analista puede ejecutar los Responders para que realicen algún tipo de acción automatizada.
-
-## Deteccion de intrusiones utilizando Machine Learning
-
-- [Guia de uso](https://gitlab.unc.edu.ar/csirt/ml_implementation)
-
-De forma paralela, se desarrollo un Sistema de Deteccion de Intrusiones (IDS) utilizando un algoritmo de Arbol de Decision, el cual fue entrenado con datos propios
-de las dependencias de la Universidad. El sistema clasifica los flujos de conexiones en alguno de los siguientes tipos:
-
-+ Trafico Benigno
-+ Escaneo de puertos
-+ Ataque de denegacion de servicio
-+ Ataque de inyeccion SQL
-+ Acceso a SSH por fuerza bruta
-
-El mismo sistema se encarga de generar alertas, las cuales se almacenan en un log llamado **alert.log**. Los datos de las alertas son enviados al servidor master
-de Security Onion.
