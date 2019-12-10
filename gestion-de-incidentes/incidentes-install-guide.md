@@ -121,7 +121,7 @@ El paquete Debian no inicia el servicio de forma predeterminada, para evitar que
 ##### Configuración
 
 Editar `/etc/elasticsearch/elasticsearch.yml` y agregar las siguientes lineas:
-```
+```yaml
 network.host: 127.0.0.1
 script.inline: true
 cluster.name: hive
