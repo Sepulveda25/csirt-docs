@@ -32,7 +32,6 @@ Un CSIRT no solo responde necesariamente a incidentes que ya han sucedido. Un CS
 + Proporcionar un ambiente de confianza para las e-transacciones.
 + Fomentar la confianza, cooperación y colaboración dentro de la UNC.
 + Intercambiar conocimiento con otros centros de respuesta a incidentes.
-+ Formación de recursos humanos.
 
 ### Partes del CSIRT
 
