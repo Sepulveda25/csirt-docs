@@ -7,14 +7,13 @@ Documentación general del CSIRT UNC
     * [La misión del CSIRT UNC](#la-misión-del-csirt-unc)
     * [Partes del CSIRT](#partes-del-csirt)
     * [Arquitectura del CSIRT](#arquitectura-del-csirt)
-  * [NSM](#nsm)  
     * [Security Onion](#security-onion)
-      * [Servidor Master](#servidor-master)
-      * [Nodo Forward](#nodo-forward)
-    * [Deteccion de intrusiones utilizando Machine Learning](#deteccion-de-intrusiones-utilizando-machine-learning)
+  * [NSM](#nsm)  
+      * [Nodo Forward (Security Onion)](#nodo-forward-security-onion)
+      * [Deteccion de intrusiones utilizando Machine Learning](#deteccion-de-intrusiones-utilizando-machine-learning)
   * [SIEM](#siem)
-    * [TheHive](#thehive)
-    * [Cortex](#cortex)
+    * [Servidor Master (Security Onion)](#servidor-master-security-onion)
+    * [Gestor de incidentes](#gestor-de-incidentes)
 
 ## El CSIRT UNC
 
@@ -55,7 +54,6 @@ En una maquina se tiene **TheHive y Cortex** que facilita la gestión de inciden
 
 ![Arquitectura del CSIRT UNC](images/csirt-architecture.png)
 
-## NSM
 
 ### Security Onion
 
@@ -68,36 +66,9 @@ Entrelaza sin problemas tres funciones principales:
 
 Se basa en un modelo distribuido cliente-servidor modificado. Una implementación distribuida estándar está compuesta por el servidor maestro (Servidor Master), uno o más nodos de reenvío (Nodos Forward) y uno o más nodos de almacenamiento (Nodos Storage). Esta arquitectura es ideal; Si bien puede costar más por adelantado, esta arquitectura proporciona una mayor escalabilidad y rendimiento en el futuro, ya que uno simplemente puede "conectar" nuevos nodos de almacenamiento para manejar más tráfico o fuentes de logs.
 
-#### Servidor Master
+## NSM
 
-- [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
-- [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
-- [Guía de Configuración de Logstash](security-onion/master/logstash/master-logstash-guide.md#guía-de-configuracion-de-logstash)
-- [Reglas de elastalert](security-onion/master/elastalert/security-onion-elastalert-rules.md#reglas-de-elastalert)
-
-El servidor maestro ejecuta su propia copia local de Elasticsearch, que administra la configuración de búsqueda entre clústeres para la implementación. Esto incluye la configuración para Nodos Storage, pero no para Nodos Forward, ya que no ejecutan componentes de Elastic Stack. Un analista se puede conectar al servidor desde una estación de trabajo cliente para ejecutar consultas y recuperar datos.
-
-El servidor maestro ejecuta los siguientes componentes (modo de producción con mejores prácticas):
-
-+ Elasticsearch
-+ Logstash
-+ Kibana
-+ Curador
-+ Elastalert
-+ Redis (solo si está configurado para enviar a un nodo de almacenamiento)
-+ OSSEC
-+ Sguild
-
-##### Requisitos de Hardware
-
-Un servidor maestro empresarial debe tener 8 núcleos de CPU como mínimo, 16-128 GB de RAM y suficiente espacio en disco (se recomiendan varios terabytes) para cumplir con sus requisitos de retención de logs. Los requerimientos pueden variar dependiendo de la cantidad de logs nuevos que son recibidos y de la cantidad de consultas que se realizan a los logs ya almacenados.
-
-Cuanto almacenamiento es necesario para cuanto tiempo de retención.
-
-+ Núcleos CPU:
-+ RAM:
-
-#### Nodo Forward
+### Nodo Forward (Security Onion)
 
 - [Guía de Requerimientos de Hardware](security-onion/forward/forward-hardware-guide.md#guía-de-requerimientos-de-hardware-de-un-nodo-forward)
 - [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
@@ -115,7 +86,7 @@ Los Nodos Forward ejecutan los siguientes componentes (modo de producción con m
 + OSSEC (HIDS)
 + Syslog-NG (envió de logs)
 
-##### Requisitos de Hardware
+#### Requisitos de Hardware
 
 Ver "Guía de Requerimientos de Hardware" abajo..
 
@@ -123,11 +94,11 @@ Hardware necesario dependiendo de la cantidad de trafico
 
 Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 
-###### Trafico sostenido promedio <200Mbps
+##### Trafico sostenido promedio <200Mbps
 + Núcleos CPU:
 + RAM:
 
-###### Trafico sostenido promedio >200Mbps & <500(?)Mbps
+##### Trafico sostenido promedio >200Mbps & <500(?)Mbps
 + Núcleos CPU:
 + RAM:
 
@@ -151,7 +122,39 @@ de Security Onion.
 
 ## SIEM
 
-- [Guía de Instalación](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
+### Servidor Master (Security Onion)
+
+- [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
+- [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
+- [Guía de Configuración de Logstash](security-onion/master/logstash/master-logstash-guide.md#guía-de-configuracion-de-logstash)
+- [Reglas de elastalert](security-onion/master/elastalert/security-onion-elastalert-rules.md#reglas-de-elastalert)
+
+El servidor maestro ejecuta su propia copia local de Elasticsearch, que administra la configuración de búsqueda entre clústeres para la implementación. Esto incluye la configuración para Nodos Storage, pero no para Nodos Forward, ya que no ejecutan componentes de Elastic Stack. Un analista se puede conectar al servidor desde una estación de trabajo cliente para ejecutar consultas y recuperar datos.
+
+El servidor maestro ejecuta los siguientes componentes (modo de producción con mejores prácticas):
+
++ Elasticsearch
++ Logstash
++ Kibana
++ Curador
++ Elastalert
++ Redis (solo si está configurado para enviar a un nodo de almacenamiento)
++ OSSEC
++ Sguild
+
+#### Requisitos de Hardware
+
+Un servidor maestro empresarial debe tener 8 núcleos de CPU como mínimo, 16-128 GB de RAM y suficiente espacio en disco (se recomiendan varios terabytes) para cumplir con sus requisitos de retención de logs. Los requerimientos pueden variar dependiendo de la cantidad de logs nuevos que son recibidos y de la cantidad de consultas que se realizan a los logs ya almacenados.
+
+Cuanto almacenamiento es necesario para cuanto tiempo de retención.
+
++ Núcleos CPU:
++ RAM:
+
+### Gestor de incidentes
+
+- [Guía de Instalación mamual](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
+- [Guía de Instalación con Ansible](https://gitlab.unc.edu.ar/csirt/thehive-cortex-ansible/tree/master#the-hive-y-cortex-con-instalacion-automatica-en-ansible)
 - [Guía de Configuración](admin/configuration.md)
 - [Guía de Administración](gestion-de-incidentes/guia-administracion.md)
 - [Webhooks](https://gitlab.unc.edu.ar/csirt/thehive-cortex-webhooks/tree/master#instalacion-webhooks-para-thehive-y-respuesta-automatica-a-alertas)
@@ -172,8 +175,8 @@ Los requerimientos de hardware son
 + RAM: 8 GB
 + Disco: 60 GB
 
-### TheHive
+#### TheHive
 TheHive es una plataforma de respuesta a incidentes de seguridad gratuita y de código abierto escalable. En esta herramienta, cada investigación corresponde a un caso. En el mensaje que recibe desde Elastalert vienen los Observables, que son campos de la alerta considerados de interés para analizar.
 
-### Cortex
+#### Cortex
 Es una herramienta que sirve para analizar los Observables enviados a TheHive. Se pueden ejecutar operaciones mediante Responders que utilizan los Observables como variables de entrada. El analista puede ejecutar los Responders para que realicen algún tipo de acción automatizada.
