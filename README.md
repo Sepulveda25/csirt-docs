@@ -184,7 +184,7 @@ TheHive es una plataforma de respuesta a incidentes de seguridad gratuita y de c
 Es una herramienta que sirve para analizar los Observables enviados a TheHive. Se pueden ejecutar operaciones mediante Responders que utilizan los Observables como variables de entrada. El analista puede ejecutar los Responders para que realicen algún tipo de acción automatizada.
 
 ## Consideraciones a futuro 
-En esta seccion se trata los trabajos o consideraciones que se deberian tener en cuenta a futuro en el proyecto. Tambien se cuenta algunas experiencias que tuvo el euipo. 
+En esta seccion se trata los trabajos o consideraciones que se deberian tener en cuenta a futuro en el proyecto. Tambien se cuenta algunas experiencias que tuvo el equipo. 
 
 ### Elastic auth
 
