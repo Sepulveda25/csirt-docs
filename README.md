@@ -224,9 +224,9 @@ Como trabajo futuro, se propone agregar un sistema de realimentacion continua al
 
 + Modo en linea: El modelo se actualiza por cada evento entrante.
 
-Para mas informacion acerca de como entrenar un modelo de Machine Learning, visite:
+Para mas informacion acerca de como reentrenar un modelo de machine learning por lotes, visite.
 
-- [Guía de entrenamiento](https://gitlab.unc.edu.ar/csirt/ml_implementation/guia-de-entrenamiento.md)
+- [Reentrenamiento con Kubernetes Cronjobs](https://mlinproduction.com/k8s-cronjobs/)
 
 
 
