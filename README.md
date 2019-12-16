@@ -15,7 +15,8 @@ Documentación general del CSIRT UNC
     * [Servidor Master (Security Onion)](#servidor-master-security-onion)
     * [Gestor de incidentes](#gestor-de-incidentes)
   * [Consideraciones a futuro](#consideraciones-a-futuro)
-    * [Elastic auth](#elastic-auth)
+    * [Autenticación en Elastic](#autenticación-en-elastic)
+    * [Realimentación modelo Machine Learning](#realimentación-modelo-machine-learning)
 
 ## El CSIRT UNC
 
@@ -186,17 +187,19 @@ Es una herramienta que sirve para analizar los Observables enviados a TheHive. S
 ## Consideraciones a futuro 
 En esta seccion se trata los trabajos o consideraciones que se deberian tener en cuenta a futuro en el proyecto. Tambien se cuenta algunas experiencias que tuvo el equipo. 
 
-### Elastic auth
+### Autenticación en Elastic
 
-#### Guia de activación 
+#### Elastic auth
 
 A partir de Elastic 6.8.0, la autenticación Elastic se incluye de forma gratuita en Elastic Features. Esto le permite asignar diferentes privilegios a diferentes usuarios en Kibana.
 
-Para habilitar, simplemente ejecute solo `so-elastic-auth` en su servidor master y siga las instrucciones. `so-elastic-auth` hará lo siguiente:
+##### Guía de activación
+
+Para habilitar, simplemente ejecutar `so-elastic-auth` en un servidor master y seguir las instrucciones. `so-elastic-auth` hará lo siguiente:
 
 * guiarlo a través del cambio de Elastic Features si es necesario
 * habilita la autenticación en Elasticsearch, Logstash, Kibana, Curator y ElastAlert
-* encuntra cualquier cuenta de usuario existente en la base de datos Sguil y cree las cuentas correspondientes en Elasticsearch con privilegio de solo lectura de forma predeterminada
+* encuentra cualquier cuenta de usuario existente en la base de datos Sguil y cree las cuentas correspondientes en Elasticsearch con privilegio de solo lectura de forma predeterminada
 
 Una vez que haya completado `so-elastic-auth`, debe:
 
@@ -210,13 +213,21 @@ link referencia:
 
 * https://securityonion.readthedocs.io/en/latest/elastic-auth.html
 
-#### Experiencia
+##### Experiencia
 
-Esta opcion se probo en servidor master. No se econtro la menera de limitar el acceso de usuarios a algunos indicies de Elasticsearch. Cualquier usurio con privilegios para ver indices, puede buscar agregar un nuevo patron de indice y de esta manera agregar indices que se supone que no deberia tener acceso.
+Esta opción se probo en servidor master. No se encontró la manera de limitar el acceso de usuarios a algunos indicies de Elasticsearch. Cualquier usuario con privilegios para ver indices, puede buscar agregar un nuevo patrón de indice y de esta manera agregar indices que se supone que no debería tener acceso.
 
-### Realimentacion modelo Machine Learning
+#### Seguridad a nivel de campo y documento
 
-En un modelo de aprendizaje automatico, es muy importante mejorar el modelo analitico periodicamente para que el mismo esté actualizado con el trafico de la red.
+"Puede controlar el acceso a los datos dentro de un índice agregando permisos de seguridad a nivel de campo y documento a un rol. Los permisos de seguridad a nivel de campo restringen el acceso a campos particulares dentro de un documento. Los permisos de seguridad a nivel de documento restringen el acceso a documentos particulares dentro de un índice."
+
+Esto puede ser utilizado para permitir visibilidad a alertas de una única dependencia por ejemplo. Se observo que esto requiere una licencia de Elastic con X-Pack.
+
+[Documentación Oficial](https://www.elastic.co/guide/en/x-pack/current/field-and-document-access-control.html#field-and-document-access-control)
+
+### Realimentación modelo Machine Learning
+
+En un modelo de aprendizaje automático, es muy importante mejorar el modelo analítico periódicamente para que el mismo esté actualizado con el trafico de la red.
 En este momento, nuestro IDS esta entrenado estaticamente con un conjunto de datos del periodo 09/2019 - 10/2019. 
 Como trabajo futuro, se propone agregar un sistema de realimentacion continua al modelo. Esta tarea se puede realizar de dos maneras:
 
@@ -224,7 +235,7 @@ Como trabajo futuro, se propone agregar un sistema de realimentacion continua al
 
 + Modo en linea: El modelo se actualiza por cada evento entrante.
 
-Para mas informacion acerca de como reentrenar un modelo de machine learning por lotes, visite.
+Para mas información acerca de como reentrenar un modelo de machine learning por lotes, visite.
 
 - [Reentrenamiento con Kubernetes Cronjobs](https://mlinproduction.com/k8s-cronjobs/)
 
