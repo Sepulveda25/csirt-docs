@@ -14,6 +14,8 @@ Documentación general del CSIRT UNC
   * [SIEM](#siem)
     * [Servidor Master (Security Onion)](#servidor-master-security-onion)
     * [Gestor de incidentes](#gestor-de-incidentes)
+  * [Consideraciones a futuro](#consideraciones-a-futuro)
+    * [Elastic auth](#elastic-auth)
 
 ## El CSIRT UNC
 
@@ -180,3 +182,52 @@ TheHive es una plataforma de respuesta a incidentes de seguridad gratuita y de c
 
 #### Cortex
 Es una herramienta que sirve para analizar los Observables enviados a TheHive. Se pueden ejecutar operaciones mediante Responders que utilizan los Observables como variables de entrada. El analista puede ejecutar los Responders para que realicen algún tipo de acción automatizada.
+
+## Consideraciones a futuro 
+En esta seccion se trata los trabajos o consideraciones que se deberian tener en cuenta a futuro en el proyecto. Tambien se cuenta algunas experiencias que tuvo el equipo. 
+
+### Elastic auth
+
+#### Guia de activación 
+
+A partir de Elastic 6.8.0, la autenticación Elastic se incluye de forma gratuita en Elastic Features. Esto le permite asignar diferentes privilegios a diferentes usuarios en Kibana.
+
+Para habilitar, simplemente ejecute solo `so-elastic-auth` en su servidor master y siga las instrucciones. `so-elastic-auth` hará lo siguiente:
+
+* guiarlo a través del cambio de Elastic Features si es necesario
+* habilita la autenticación en Elasticsearch, Logstash, Kibana, Curator y ElastAlert
+* encuntra cualquier cuenta de usuario existente en la base de datos Sguil y cree las cuentas correspondientes en Elasticsearch con privilegio de solo lectura de forma predeterminada
+
+Una vez que haya completado `so-elastic-auth`, debe:
+
+* inicie sesión en Kibana con la `elastic` cuenta de superusuario
+* establecer cualquier otro privilegio de cuenta según sea necesario
+* distribuya las contraseñas temporales generadas por `so-elastic-auth` sus usuarios y haga que restablezcan sus contraseñas.
+
+Tenga en cuenta que continuará autenticándose en Sguil, Squert y CapMe con su cuenta tradicional Sguil/Squert/CapMe.
+
+link referencia:
+
+* https://securityonion.readthedocs.io/en/latest/elastic-auth.html
+
+#### Experiencia
+
+Esta opcion se probo en servidor master. No se econtro la menera de limitar el acceso de usuarios a algunos indicies de Elasticsearch. Cualquier usurio con privilegios para ver indices, puede buscar agregar un nuevo patron de indice y de esta manera agregar indices que se supone que no deberia tener acceso.
+
+### Realimentacion modelo Machine Learning
+
+En un modelo de aprendizaje automatico, es muy importante mejorar el modelo analitico periodicamente para que el mismo esté actualizado con el trafico de la red.
+En este momento, nuestro IDS esta entrenado estaticamente con un conjunto de datos del periodo 09/2019 - 10/2019. 
+Como trabajo futuro, se propone agregar un sistema de realimentacion continua al modelo. Esta tarea se puede realizar de dos maneras:
+
++ Modo por lotes manual: Se reentrena el modelo cada un cierto periodo fijo (p.e. una vez por semana).
+
++ Modo en linea: El modelo se actualiza por cada evento entrante.
+
+Para mas informacion acerca de como reentrenar un modelo de machine learning por lotes, visite.
+
+- [Reentrenamiento con Kubernetes Cronjobs](https://mlinproduction.com/k8s-cronjobs/)
+
+
+
+
