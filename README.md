@@ -214,3 +214,20 @@ link referencia:
 
 Esta opcion se probo en servidor master. No se econtro la menera de limitar el acceso de usuarios a algunos indicies de Elasticsearch. Cualquier usurio con privilegios para ver indices, puede buscar agregar un nuevo patron de indice y de esta manera agregar indices que se supone que no deberia tener acceso.
 
+### Realimentacion modelo Machine Learning
+
+En un modelo de aprendizaje automatico, es muy importante mejorar el modelo analitico periodicamente para que el mismo esté actualizado con el trafico de la red.
+En este momento, nuestro IDS esta entrenado estaticamente con un conjunto de datos del periodo 09/2019 - 10/2019. 
+Como trabajo futuro, se propone agregar un sistema de realimentacion continua al modelo. Esta tarea se puede realizar de dos maneras:
+
++ Modo por lotes manual: Se reentrena el modelo cada un cierto periodo fijo (p.e. una vez por semana).
+
++ Modo en linea: El modelo se actualiza por cada evento entrante.
+
+Para mas informacion acerca de como entrenar un modelo de Machine Learning, visite:
+
+- [Guía de entrenamiento](https://gitlab.unc.edu.ar/csirt/ml_implementation/guia-de-entrenamiento.md)
+
+
+
+
