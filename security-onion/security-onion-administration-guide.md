@@ -8,8 +8,8 @@ En la siguiente guia se detalla la informacion para gestionar y administrar las 
 
 * [Actualizacion](#actualización)
 * [Salt](#salt)
-* [Nada](#actualización)
-* [Mas](#actualización)
+* [Nodo Forward](#nodo-forward)
+  * [Guía de visualización de perdidas](#guía-de-visualización-de-perdidas)
 
 ## Actualización
 
@@ -41,11 +41,11 @@ Para mas informacion, puede leer la guía oficial:
 
 En un nodo forward se puede utilizar un script desarrollado por Security Onion y modificado para solamente visualizar las perdidas en las distintas herramientas de captura y procesamiento. El script original que esta en el nodo forward se llama *sostat* (/usr/sbin/sostat).
 
-[Script de visualización de perdidas]($2)
+[Script de visualización de perdidas](https://gitlab.unc.edu.ar/csirt/sonion-forward-packet-loss)
 
 Ejecutar este script con sudo:
 ```bash
-sudo ./sostat_packet_loss
+sudo ./sostat_packet_loss.sh
 ```
 
 #### Estadísticas de perdidas
