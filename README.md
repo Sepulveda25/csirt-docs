@@ -51,7 +51,7 @@ Hay una o varias maquinas llamadas **nodo forward**, en cada uno se tiene un IDS
 
 En una maquina llamada **servidor master** se realiza la gestión y análisis de alertas. Alertas previamente generadas (de un nodo forward por ejemplo) son recibidas, normalizadas y almacenadas. Se pueden realizar análisis directos o se pueden enviar alertas hacia otras aplicaciones bajo ciertas condiciones.
 
-La maquina servidor master, asi como tambien algunos de los nodos forward, son basados en el suite de herramientas **Security Onion**. El resto de los nodos forward son simples maquinas virtuales corriendo un IDS propio construido con tecnicas de Machine Learning.
+La maquina servidor master, así como también algunos de los nodos forward, son basados en el suite de herramientas **Security Onion**. El resto de los nodos forward son simples maquinas virtuales corriendo un IDS propio construido con técnicas de Machine Learning.
 
 En una maquina se tiene **TheHive y Cortex** que facilita la gestión de incidentes y la automatización de respuestas ante los mismos. Alertas son filtradas en el servidor master y enviadas a TheHive usando ElastAlert. 
 
@@ -77,7 +77,7 @@ Se basa en un modelo distribuido cliente-servidor modificado. Una implementació
 - [Guía de Instalación](security-onion/security-onion-install-guide.md#guía-de-instalación-de-security-onion)
 - [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
 - [Guía de Configuración (TO-DO)](admin/configuration.md)
-- [Guía de modificacion de prioridades IDS](security-onion/forward/forward-modificacion-prioridad-guide.md#guía-de-modificacion-de-prioridades )
+- [Guía de modificación de prioridades IDS](security-onion/forward/forward-modificacion-prioridad-guide.md#guía-de-modificacion-de-prioridades )
 
 Cuando se usa un Nodo Forward, los componentes de Elastic Stack no están instalados. Syslog-NG reenvía todos los registros a Logstash en el servidor maestro a través de un túnel autossh, donde se almacenan en Elasticsearch en el servidor maestro, o se reenvían a la instancia Elasticsearch del nodo de almacenamiento (si el servidor maestro se ha configurado para usar un nodo de almacenamiento). A partir de ahí, los datos pueden consultarse mediante el uso de la búsqueda búsqueda cruzada entre clústeres.
 
@@ -107,17 +107,17 @@ Cuanto almacenamiento es necesario para cuanto tiempo de retención.
 
 Link a documento especificando las pruebas realizadas (?)
 
-### Deteccion de intrusiones utilizando Machine Learning
+### Detección de intrusiones utilizando Machine Learning
 
-- [Guia de uso](https://gitlab.unc.edu.ar/csirt/ml_implementation)
+- [Guía de uso](https://gitlab.unc.edu.ar/csirt/ml_implementation)
 
-De forma paralela, se desarrollo un Sistema de Deteccion de Intrusiones (IDS) utilizando un algoritmo de Arbol de Decision, el cual fue entrenado con datos propios
+De forma paralela, se desarrollo un Sistema de Detección de Intrusiones (IDS) utilizando un algoritmo de Árbol de Decisión, el cual fue entrenado con datos propios
 de las dependencias de la Universidad. El sistema clasifica los flujos de conexiones en alguno de los siguientes tipos:
 
 + Trafico Benigno
 + Escaneo de puertos
-+ Ataque de denegacion de servicio
-+ Ataque de inyeccion SQL
++ Ataque de denegación de servicio
++ Ataque de inyección SQL
 + Acceso a SSH por fuerza bruta
 
 El mismo sistema se encarga de generar alertas, las cuales se almacenan en un log llamado **alert.log**. Los datos de las alertas son enviados al servidor master
@@ -147,16 +147,11 @@ El servidor maestro ejecuta los siguientes componentes (modo de producción con 
 
 #### Requisitos de Hardware
 
-Un servidor maestro empresarial debe tener 8 núcleos de CPU como mínimo, 16-128 GB de RAM y suficiente espacio en disco (se recomiendan varios terabytes) para cumplir con sus requisitos de retención de logs. Los requerimientos pueden variar dependiendo de la cantidad de logs nuevos que son recibidos y de la cantidad de consultas que se realizan a los logs ya almacenados.
-
-Cuanto almacenamiento es necesario para cuanto tiempo de retención.
-
-+ Núcleos CPU:
-+ RAM:
+Un servidor maestro empresarial debe tener 8 núcleos de CPU como mínimo, 16-128 GB de RAM y suficiente espacio en disco (se recomiendan varios terabytes) para cumplir con sus requisitos de retención de logs. Los requerimientos pueden variar dependiendo de la cantidad de logs nuevos que son recibidos y de la cantidad de consultas que se realizan a los logs ya almacenados. Idealmente se utilizan discos duros de tipo SSD para poder realizar consultas en tiempos razonables.
 
 ### Gestor de incidentes
 
-- [Guía de Instalación mamual](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
+- [Guía de Instalación manual](gestion-de-incidentes/incidentes-install-guide.md#guía-de-instalación-de-gestor-de-incidentes)
 - [Guía de Instalación con Ansible](https://gitlab.unc.edu.ar/csirt/thehive-cortex-ansible/tree/master#the-hive-y-cortex-con-instalacion-automatica-en-ansible)
 - [Guía de Configuración](admin/configuration.md)
 - [Guía de Administración](gestion-de-incidentes/guia-administracion.md)
@@ -169,11 +164,7 @@ Utilizar un gestor de respuestas a incidentes, viene de la necesidad de tener un
 
 #### Requisitos de Hardware
 
-VER-> Hardware necesario dependiendo de la cantidad de trafico 
-VER-> Cuanto almacenamiento es necesario para cuanto tiempo de retención.
-
-Los requerimientos de hardware son
-
+Los requerimientos de hardware (mínimos) recomendados son:
 + Núcleos CPU: 8vCPU
 + RAM: 8 GB
 + Disco: 60 GB
@@ -185,7 +176,7 @@ TheHive es una plataforma de respuesta a incidentes de seguridad gratuita y de c
 Es una herramienta que sirve para analizar los Observables enviados a TheHive. Se pueden ejecutar operaciones mediante Responders que utilizan los Observables como variables de entrada. El analista puede ejecutar los Responders para que realicen algún tipo de acción automatizada.
 
 ## Consideraciones a futuro 
-En esta seccion se trata los trabajos o consideraciones que se deberian tener en cuenta a futuro en el proyecto. Tambien se cuenta algunas experiencias que tuvo el equipo. 
+En esta sección se trata los trabajos o consideraciones que se deberían tener en cuenta a futuro en el proyecto. También se cuenta algunas experiencias que tuvo el equipo. 
 
 ### Autenticación en Elastic
 
@@ -229,7 +220,7 @@ Esto puede ser utilizado para permitir visibilidad a alertas de una única depen
 
 En un modelo de aprendizaje automático, es muy importante mejorar el modelo analítico periódicamente para que el mismo esté actualizado con el trafico de la red.
 En este momento, nuestro IDS esta entrenado estaticamente con un conjunto de datos del periodo 09/2019 - 10/2019. 
-Como trabajo futuro, se propone agregar un sistema de realimentacion continua al modelo. Esta tarea se puede realizar de dos maneras:
+Como trabajo futuro, se propone agregar un sistema de realimentación continua al modelo. Esta tarea se puede realizar de dos maneras:
 
 + Modo por lotes manual: Se reentrena el modelo cada un cierto periodo fijo (p.e. una vez por semana).
 

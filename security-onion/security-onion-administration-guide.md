@@ -6,10 +6,19 @@ En la siguiente guia se detalla la informacion para gestionar y administrar las 
 
 ## Tabla de Contenidos
 
+* [Cuenta de Administración](#cuenta-de-administración)
 * [Actualizacion](#actualización)
 * [Salt](#salt)
 * [Nodo Forward](#nodo-forward)
   * [Guía de visualización de perdidas](#guía-de-visualización-de-perdidas)
+
+## Cuenta de Administración
+
+Durante la instalación del Servidor Master o del Nodo Forward utilizando Ansible se crea un usuario llamado `admin`. Para administrar estos dispositivos se recomienda utilizar esta cuenta en lugar de utilizar la cuenta root por las siguientes razones:
+- En el Servidor Master algunos servicios (docker en particular) no pueden ser reiniciados correctamente estando logeado en la cuenta root.
+- En el Nodo Forward si uno esta logeado en la cuenta root las alertas generadas por Suricata son impresas a la terminal.
+
+En caso de necesitar realizar acciones que requieren mayores privilegios siempre se puede utilizar sudo.
 
 ## Actualización
 
