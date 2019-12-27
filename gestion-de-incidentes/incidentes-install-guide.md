@@ -362,11 +362,11 @@ La organización `cortex` predeterminada no se puede utilizar para ningún otro 
 
 Cree la cuenta de administrador de la organización (usuario con el rol `orgAdmin`).
 
-Luego, especifique una contraseña para este usuario. Después de hacerlo, cierre sesión e inicie sesión con esa nueva cuenta de usuario. 
+Luego ingresar en la organizacion (haciendo click sobre el nombre) y crear un usuario. Después de hacerlo, cierre sesión e inicie sesión con esa nueva cuenta de usuario. 
 
-###### Paso 6: Habilitar y configurar Analyzers
+###### Paso 6: Habilitar y configurar Analyzers y Responders
 
-Habilite los Analyzers que necesita, configúrelos utilizando las pestañas **Organization** > **Analyzers Config**. Toda la configuración del analizador se realiza mediante la interfaz de usuario web, incluida la adición de claves API y la configuración de límites de velocidad.
+Habilite los Analyzers que necesita, configúrelos utilizando las pestañas **Organization** > **Analyzers Config**. Toda la configuración del analizador se realiza mediante la interfaz de usuario web, incluida la adición de claves API y la configuración de límites de velocidad. (Lo mismo se realiza para los Responders se los habilita en  **Organization** > **Responders Config**)
 
 ###### Paso 7: cree una cuenta para la integración de TheHive
 
