@@ -277,10 +277,10 @@ for I in $(find Cortex-Analyzers -name 'requirements.txt'); do sudo -H pip3 inst
 ```
 
 A continuación, deberá decirle a Cortex dónde encontrar los Analyzers. Los Analyzers pueden estar en diferentes directorios, como se muestra en este ejemplo ficticio del archivo de configuración de Cortex (`/etc/cortex/application.conf`): 
-```
+```ruby
 analyzer {
   # Directory that holds analyzers
-  path = [
+  urls = [
     "/path/to/default/analyzers",
     "/path/to/my/own/analyzers"
   ]
@@ -297,7 +297,7 @@ analyzer {
 
 responder {
   # Directory that holds responders
-  path = [
+  urls = [
     "/path/to/default/responder",
     "/path/to/my/own/responder"
   ]
@@ -367,15 +367,46 @@ Luego ingresar en la organizacion (haciendo click sobre el nombre) y crear un us
 
 Habilite los Analyzers que necesita, configúrelos utilizando las pestañas **Organization** > **Analyzers Config**. Toda la configuración del analizador se realiza mediante la interfaz de usuario web, incluida la adición de claves API y la configuración de límites de velocidad. (Lo mismo se realiza para los Responders se los habilita en  **Organization** > **Responders Config**)
 
-###### Paso 7: cree una cuenta para la integración de TheHive
+###### Paso 7: configurar archivo aplication.conf para que TheHive se comunique con Cortex 
 
-Si está utilizando TheHive, cree una nueva cuenta dentro de su organización con el rol `leer, analizar` y genere una clave API que deberá agregar a la configuración de TheHive.
+Una ver creada la cuenta `en Cortex se debe generar un API key`, esta debe ser copiada en la dentro del directorio `/etc/thehive/application.conf`. Agregar en el campo `url` la IP y puerto del servidor cortex y en el campo `key` la API key generada en cortex:
 
-###### Paso 8: configurar archivo aplication.conf para que TheHive se comunique con Cortex 
+```ruby
+cortex {
+"CORTEX-SERVER-ID" {
+    # URL of the Cortex server
+    url = "http://CORTEX_SERVER:CORTEX_PORT" 
+    # Key of the Cortex user, mandatory for Cortex 2
+    key = "API key"
+  }
+  # HTTP client configuration, more details in section 
+  # ws {
+  #   proxy {}
+  #   ssl {}
+  # }
 
-Una ver creada la cuenta en Cortex se debe generar un API key, esta debe ser copiada en la dentro del directorio `/etc/thehive/application.conf`:
-
+}
 ```
+Depuespues descomentar la linea que se encuentra arriba del campo cortex
+
+```ruby
+## Enable the Cortex module
+play.modules.enabled += connectors.cortex.CortexConnector
+```
+
+Luego copiar y pegar las siguientes lineas dentro de campo cortex
+
+```ruby
+# Check job update time interval
+refreshDelay = 1 minute
+# Maximum number of successive errors before give up
+maxRetryOnError = 3
+# Check remote Cortex status time interval
+statusCheckInterval = 1 minute
+```
+Finalmente debe quedar de la siguiente manera:
+
+```ruby
 ## Enable the Cortex module
 play.modules.enabled += connectors.cortex.CortexConnector
 
@@ -391,7 +422,7 @@ cortex {
   #   proxy {}
   #   ssl {}
   # }
-  # Check job update time interval
+  Check job update time interval
   refreshDelay = 1 minute
   # Maximum number of successive errors before give up
   maxRetryOnError = 3
@@ -399,3 +430,7 @@ cortex {
   statusCheckInterval = 1 minute
 }
 ```
+
+###### Paso 8: cree una cuenta para la integración de TheHive
+
+Cree una nueva cuenta en TheHive dentro de su organización con el rol `leer, analizar` y genere una clave API que deberá agregar a la configuración de `elastalert`.
