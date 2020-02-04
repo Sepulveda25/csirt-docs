@@ -131,6 +131,7 @@ de Security Onion.
 - [Guía de Administración](security-onion/security-onion-administration-guide.md#guía-de-administración-de-security-onion)
 - [Guía de Configuración de Logstash](security-onion/master/logstash/master-logstash-guide.md#guía-de-configuracion-de-logstash)
 - [Reglas de elastalert](security-onion/master/elastalert/security-onion-elastalert-rules.md#reglas-de-elastalert)
+- [Guía de Uso de Squert](security-onion/master/squert/squert-use-guide.md#squert)
 
 El servidor maestro ejecuta su propia copia local de Elasticsearch, que administra la configuración de búsqueda entre clústeres para la implementación. Esto incluye la configuración para Nodos Storage, pero no para Nodos Forward, ya que no ejecutan componentes de Elastic Stack. Un analista se puede conectar al servidor desde una estación de trabajo cliente para ejecutar consultas y recuperar datos.
 
