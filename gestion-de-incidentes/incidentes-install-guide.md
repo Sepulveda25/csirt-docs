@@ -430,7 +430,11 @@ cortex {
   statusCheckInterval = 1 minute
 }
 ```
+###### Paso 8: reiniciar el servicio thehive para que tome los cambios
 
-###### Paso 8: cree una cuenta para la integración de TheHive
+``` bash
+sudo systemctl restart thehive.service
+```
+###### Paso 9: cree una cuenta para la integración de TheHive
 
 Cree una nueva cuenta en TheHive dentro de su organización con el rol `leer, analizar` y genere una clave API que deberá agregar a la configuración de `elastalert`.
