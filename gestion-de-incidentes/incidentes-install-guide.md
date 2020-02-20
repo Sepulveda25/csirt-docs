@@ -422,7 +422,7 @@ cortex {
   #   proxy {}
   #   ssl {}
   # }
-  Check job update time interval
+  #Check job update time interval
   refreshDelay = 1 minute
   # Maximum number of successive errors before give up
   maxRetryOnError = 3
